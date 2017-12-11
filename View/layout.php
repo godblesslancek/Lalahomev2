@@ -3,7 +3,13 @@
     <html>
 
         <head>
+            <?php
+            if (!empty($page_title)) {
 
+                // Dynamic tag
+                echo "<title>" . $page_title . "</title>\n";
+            }
+            ?>
         </head>
 
         <header>
