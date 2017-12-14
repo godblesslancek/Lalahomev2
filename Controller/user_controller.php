@@ -13,13 +13,19 @@ class UsersController{
 
     public function connect(){
 
-        $Email = $_POST['Email'];
-        $Password = $_POST['Password'];
+        if (
+            (isset($_POST['Email']) && !empty($_POST['Email'])) &&
+            (isset($_POST['Password']) && !empty(['Password']))){
 
-        //$user = new Users();
-        //$user->connect($Email, $Password);
+            $Email = $_POST['Email'];
+            $Password = $_POST['Password'];
 
-        header('Location: index.php');
+            //$user = new Users();
+            //$user->connect($Email, $Password);
+
+            header('Location: index.php');
+        }
+
     }
 
     public function disconnect(){
@@ -27,44 +33,85 @@ class UsersController{
         header('Location: index.php');
     }
 
+    private function checkPost($Post_Array){
+
+        foreach ($Post_Array as $key){
+            if(!isset($_POST[$key]) && empty($_POST[$key])){
+                return False;
+            }
+        }
+        return True;
+    }
+
     public function register(){
 
-        /*
-        $user = new Users();
+        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
 
-        $user_params = [
-            "LastName" => $_POST['LastName'],
-            "FirstName" => $_POST['FirstName'],
-            "Email" => $_POST['Email'],
-            "Phone" => $_POST['Phone'],
-            "Password" => $_POST['Password'],
-            'Role' => $_POST['Role']
+        if ( $this->checkPost($post_params)) {
 
-        ];
+            if ($_POST['Password'] != $_POST['Password_Verif']) {
+                $error = 'Password does not match';
 
-        $user->register_user($user_params);
-        */
-        $controller = 'pages';
-        $action = 'home';
+                $controller = 'pages';
+                $action = 'register_user';
+
+            } else {
+                /*
+                $user = new Users();
+
+                $user_params = [
+                    "LastName" => $_POST['LastName'],
+                    "FirstName" => $_POST['FirstName'],
+                    "Email" => $_POST['Email'],
+                    "Phone" => $_POST['Phone'],
+                    "Password" => $_POST['Password'],
+                    'Role' => $_POST['Role']
+
+                ];
+
+                $user->register_user($user_params);
+                */
+
+                $controller = 'pages';
+                $action = 'home';
+
+            }
+        }
+
+
     }
 
     public function update(){
 
-        /*
-        $user = new Users();
+        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
 
-        $user_params = [
-            "LastName" => $_POST['LastName'],
-            "FirstName" => $_POST['FirstName'],
-            "Email" => $_POST['Email'],
-            "Phone" => $_POST['Phone'],
-            'Role' => $_SESSION['Role']
+        if ($this->checkPost($post_params)) {
 
-        ];
+            if ($_POST['Password'] != $_POST['Password_Verif']) {
+                $error = 'Password does not match';
 
-        $user->update_user($user_params);
-        */
+                $controller = 'pages';
+                $action = 'update_user';
+
+            } else {
+
+                /*
+                $user = new Users();
+
+                $user_params = [
+                    "LastName" => $_POST['LastName'],
+                    "FirstName" => $_POST['FirstName'],
+                    "Email" => $_POST['Email'],
+                    "Phone" => $_POST['Phone'],
+                    'Role' => $_SESSION['Role']
+
+                ];
+
+                $user->update_user($user_params);
+                */
+            }
         $controller = 'pages';
         $action = 'home';
+        }
     }
 }

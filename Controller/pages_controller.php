@@ -16,11 +16,15 @@ class PagesController {
     }
 
     public function error() {
-        //require_once('views/pages/error.php');
+        require_once('View/pages/error.php');
     }
 
     public function register_user(){
         //require_once ('views/pages/create_user_form.php');
     }
+
+    public function update_user(){}
+
+    public function delete_user(){}
 }
 ?>
