@@ -3,8 +3,10 @@
     <html>
 
         <head>
+            <meta charset="utf-8" />
             <?php
             if (!empty($page_title)) { echo "<title>" . $page_title . "</title>\n";}  ?>
+            <link rel="stylesheet" href="View/style.css" />
         </head>
 
         <header>

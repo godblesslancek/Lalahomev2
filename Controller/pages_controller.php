@@ -8,17 +8,20 @@
 class PagesController {
 
     public function home() {
-        //require_once('views/pages/home.php');
+        require_once('View/pages/home.php');
     }
 
-    public function connection(){
-        //require_once 'views/pages/login.php';
+    public function login(){
+        require_once 'View/pages/login.php';
     }
 
     public function error() {
         require_once('View/pages/error.php');
     }
 
+    public function home_user(){
+        require_once ('View/pages/home_user.php');
+    }
     public function register_user(){
         //require_once ('views/pages/create_user_form.php');
     }
