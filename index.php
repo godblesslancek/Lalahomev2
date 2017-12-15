@@ -64,25 +64,8 @@ if ((isset($_POST["Email"]) && !empty($_POST["Email"])) && (isset($_POST["Passwo
    $action = 'connect';
 }
 
-// Création utilisateur
-if (
-    (isset($_POST['LastName']) && !empty($_POST['LastName']))
-    && (isset($_POST['FirstName']) && !empty($_POST['FirstName']))
-    && (isset($_POST['Email']) && !empty($_POST['Email']))
-    && (isset($_POST['Phone']) && !empty($_POST['Phone']))
-    && (isset($_POST['Email']) && !empty($_POST['Email']))
-    && (isset($_POST['Password']) && !empty($_POST['Password']))
-    && (isset($_POST['Password_Verif']) && !empty($_POST['Password_Verif']))
-    && (isset($_POST['Role']) && !empty($_POST['Role']))
-    ) {
 
-    if ($_POST['Password'] != $_POST['Password_Verif']) {
-        $erreur = 'Password does not match';
-    } else {
-        $controller = 'user';
-        $action = 'register';
-    }
-}
+
 
 // Chargement du layout
 require_once('View/layout.php');
