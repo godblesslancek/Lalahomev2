@@ -20,8 +20,8 @@ class UsersController{
             $Email = $_POST['Email'];
             $Password = $_POST['Password'];
 
-            //$user = new Users();
-            //$user->connect($Email, $Password);
+            $user = new Users();
+            $user->connect($Email, $Password);
 
             header('Location: index.php');
         }
@@ -56,7 +56,7 @@ class UsersController{
                 $action = 'register_user';
 
             } else {
-                /*
+
                 $user = new Users();
 
                 $user_params = [
@@ -70,7 +70,7 @@ class UsersController{
                 ];
 
                 $user->register_user($user_params);
-                */
+
 
                 $controller = 'pages';
                 $action = 'home';
@@ -95,7 +95,7 @@ class UsersController{
 
             } else {
 
-                /*
+
                 $user = new Users();
 
                 $user_params = [
@@ -103,12 +103,12 @@ class UsersController{
                     "FirstName" => $_POST['FirstName'],
                     "Email" => $_POST['Email'],
                     "Phone" => $_POST['Phone'],
-                    'Role' => $_SESSION['Role']
+                    'ID' => $_POST['ID']
 
                 ];
 
                 $user->update_user($user_params);
-                */
+
             }
         $controller = 'pages';
         $action = 'home';
