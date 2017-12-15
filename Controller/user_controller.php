@@ -7,11 +7,9 @@
  */
 class UsersController{
 
-    public function index() {
-        //require_once('View/pages/login.php');
-    }
 
     public function connect(){
+
 
         if (
             (isset($_POST['Email']) && !empty($_POST['Email'])) &&
@@ -21,11 +19,13 @@ class UsersController{
             $Password = $_POST['Password'];
 
             $user = new Users();
-            $user->connect($Email, $Password);
-
-            header('Location: index.php');
+            $connect = $user->connect($Email, $Password);
+            if ($connect){
+                header('Location: index.php?controller=pages&action=home_user');
+            }
         }
-
+        else
+            header('Location: index.php?controller=pages&action=login');
     }
 
     public function disconnect(){

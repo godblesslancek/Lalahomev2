@@ -9,7 +9,7 @@
 // Routeur permettant de gérer les actions qui nécessitent d'être placé dans le body
 
   //Liste des controllers autorisés et de leurs actions
-  $controllers = array('pages' => ['home', 'error', 'connection', 'register_user']);
+  $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user']);
 
   // On regarde si le controller demandé et son action sont autorisés
   // Si quelqu'un essaie d'accéder quelque chose de non autorisé, une page d'erreur sera affiché.

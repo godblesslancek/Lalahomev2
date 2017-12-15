@@ -19,5 +19,21 @@ if (array_key_exists($controller, $controllers)) {
     }
 }
 
+if ($controller == 'pages'){
+    switch ($action):
+        case 'login':
+            $page_title = 'Connexion';
+            break;
+        case 'home':
+            $page_title = 'TECHOUSE';
+            break;
+        case 'home_user':
+            $page_title = 'Ma Maison';
+            break;
+        case 'error':
+            $page_title = 'Erreur';
+    endswitch;
+}
+
 
 ?>

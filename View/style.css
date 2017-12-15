@@ -2,7 +2,7 @@ body
 {
    /* background-color: rgba(246, 253, 255, 0.979);*/
     color: black;
-    background-image: url("Maison.png");
+    background-image: url("Content/images/Maison.png");
     background-attachment: fixed; /* Le fond restera fixe */
 }
 h1,h2,h3,h4

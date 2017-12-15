@@ -16,6 +16,10 @@ error_reporting(E_ALL | E_STRICT);
 //Création de la session
 session_start();
 
+
+// Chargement de l'accès à la base de donnée
+require_once('Model/Database.php');
+
 ///
 /// Fonction de routing pour les actions des controllers
 ///
@@ -34,7 +38,7 @@ function call($controller, $action) {
             $_controller = new PagesController();
             break;
         case 'user':
-            //require_once('Model/Users.php');
+            require_once('Model/Users.php');
             $_controller = new UsersController();
     }
 
@@ -42,10 +46,6 @@ function call($controller, $action) {
     $_controller->{ $action }();
 }
 
-
-
-// Chargement de l'accès à la base de donnée
-require_once('Model/Database.php');
 
 
 // Définition du controller et de l'action en fonction des paramètres
