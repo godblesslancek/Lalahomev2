@@ -23,7 +23,7 @@ class PagesController {
         require_once ('View/pages/home_user.php');
     }
     public function register_user(){
-        //require_once ('views/pages/create_user_form.php');
+        //require_once ('views/pages/creuser.php');
     }
 
     public function update_user(){}
