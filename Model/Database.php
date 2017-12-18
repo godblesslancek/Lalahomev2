@@ -14,7 +14,7 @@ class Database {
     private $_host = "localhost";
     private $_username = "root";
     private $_password = "root";
-    private $_database = "lalahome";
+    private $_database = "techouse";
 
 
     // Constructor

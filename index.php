@@ -58,13 +58,6 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action     = 'home';
 }
 
-// Connexion utilisateur
-if ((isset($_POST["Email"]) && !empty($_POST["Email"])) && (isset($_POST["Password"]) && !empty($_POST["Password"]))){
-   $controller = 'user';
-   $action = 'connect';
-}
-
-
 
 
 // Chargement du layout
