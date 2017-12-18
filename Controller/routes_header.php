@@ -8,18 +8,36 @@
 
 // Routeur permettant de gérer les actions qui nécessitent d'être placé avant le HEADER HTTP
 
-//Liste des controllers autorisés et de leurs actions
-$controllers = array('user' => ['connect', 'disconnect', 'register']);
+//Liste des controllers autorisés et de leurs actions by default
+$controller_rh = array('user' => ['connect']);
+
+
+// Si l'utilisateur est connecté on rajoute au tableaux les actions possibles
+if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
+    switch ($_SESSION['Role']):
+        case 'admin':
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register']);
+            break;
+        case 'FU':
+            $controller_rh = array('user' => ['connect', 'disconnect']);
+            break;
+        case 'FM':
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register']);
+            break;
+        case 'BM':
+            $controller_rh = array('user' => ['connect', 'disconnect']);
+    endswitch;
+}
 
 // On regarde si le controller demandé et son action sont autorisés
 // Si quelqu'un essaie d'accéder quelque chose de non autorisé, une page d'erreur sera affiché.
-if (array_key_exists($controller, $controllers)) {
-    if (in_array($action, $controllers[$controller])) {
+if (array_key_exists($controller, $controller_rh)) {
+    if (in_array($action, $controller_rh[$controller])) {
         call($controller, $action);
     }
 }
 
-if ($controller == 'pages'){
+if ($controller_rh == 'pages'){
     switch ($action):
         case 'login':
             $page_title = 'Connexion';
