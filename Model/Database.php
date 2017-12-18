@@ -13,8 +13,8 @@ class Database {
     private $_connection;
     private $_host = "localhost";
     private $_username = "root";
-    private $_password = "root";
-    private $_database = "lalahome";
+    private $_password = "";
+    private $_database = "techouse";
 
 
     // Constructor
