@@ -10,10 +10,9 @@ class UsersController{
 
     public function connect(){
 
+        $post_params = array('Email', 'Password');
 
-        if (
-            (isset($_POST['Email']) && !empty($_POST['Email'])) &&
-            (isset($_POST['Password']) && !empty(['Password']))){
+        if ($this->checkPost($post_params)){
 
             $Email = $_POST['Email'];
             $Password = $_POST['Password'];
@@ -22,6 +21,9 @@ class UsersController{
             $connect = $user->connect($Email, $Password);
             if ($connect){
                 header('Location: index.php?controller=pages&action=home_user');
+            }
+            else{
+                header('Location: index.php?controller=pages&action=login');
             }
         }
         else

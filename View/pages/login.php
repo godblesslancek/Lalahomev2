@@ -7,7 +7,7 @@
         <h1>Mon espace</h1>
 
 
-        <form enctype="multipart/form-data" method="post" accept-charset="UTF-8">
+        <form enctype="multipart/form-data" method="post" accept-charset="UTF-8" action="index.php?controller=user&action=connect">
             <label for="Email">Adresse e-mail :</label>
             <input id="Email" name="Email" type="email">
             <br>
