@@ -85,7 +85,7 @@ class UsersController{
 
     public function update(){
 
-        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
+        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Role', 'ID');
 
         if ($this->checkPost($post_params)) {
 
@@ -114,6 +114,14 @@ class UsersController{
             }
         $controller = 'pages';
         $action = 'home';
+        }
+    }
+
+    public function delete(){
+
+        if (isset($_POST['ID']) && !empty($_POST['ID'])){
+            $user = new Users();
+            $user->delete_user($_POST['ID']);
         }
     }
 }
