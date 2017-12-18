@@ -37,7 +37,7 @@ if (array_key_exists($controller, $controller_rh)) {
     }
 }
 
-if ($controller_rh == 'pages'){
+if ($controller== 'pages'){
     switch ($action):
         case 'login':
             $page_title = 'Connexion';
