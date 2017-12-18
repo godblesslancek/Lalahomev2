@@ -40,7 +40,7 @@ class Users
 
             if (password_verify($Password, $data['password'])){
                 //setcookie('IDuser', $data['ID'], time() + 365*24*3600, null, null, false, true);
-                //$_SESSION['Role'] = $data['role_user'];
+                $_SESSION['Role'] = $data['role_user'];
                 return True;
 
             }
