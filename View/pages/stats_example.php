@@ -65,7 +65,7 @@ $temp_pie->addDataset($temp_pie_dataset);
 /*
  * Create charts
  *
- */
+ *
 
 $attributes['id'] = 'example_line';
 $Line = new ChartJS('line', $labels, $options, $attributes);
@@ -93,6 +93,7 @@ $Pie->addDataset($datasets[4]);
 $attributes['id'] = 'example_doughnut';
 $Doughnut = new ChartJS('doughnut', $labels, $options, $attributes);
 $Doughnut->addDataset($datasets[4]);
+*/
 
 /*
  * <h1>Ligne</h1>
@@ -124,7 +125,7 @@ echo $Pie. $Doughnut;
 <h1> Temperature de la semaine au format bar</h1>
 <?php echo $temp_bar;?>
 
-<h1> Temperature de la semaine au format bar</h1>
+<h1> Temperature de la semaine au format camembert</h1>
 <?php echo $temp_pie;?>
 
 <script src="View/Content/js/Chart.js"></script>
