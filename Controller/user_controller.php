@@ -124,4 +124,18 @@ class UsersController{
             $user->delete_user($_POST['ID']);
         }
     }
+
+
+    public function list_user(){
+
+        $users_list = [];
+
+        $tab = '<tr>';
+
+        foreach ($users_list as $user){
+
+        }
+
+
+    }
 }
