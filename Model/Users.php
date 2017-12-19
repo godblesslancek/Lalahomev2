@@ -15,12 +15,36 @@ class Users
     private $FirstName;
     private $Email;
     private $Phone;
-    private $id_Role;
+    private $Role;
+
+    /**
+     * @return mixed
+     */
+    public function getID()
+    {
+        return $this->ID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->FirstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->Role;
+    }
     private $Password;
     private $id_Appart;
 
 
-    public static function connect($Email,$Password){
+    public function connect($Email,$Password){
 
         $db = Database::getInstance();
         $conn = $db->getConnection();
@@ -39,8 +63,9 @@ class Users
             $data = $row->fetch_assoc();
 
             if (password_verify($Password, $data['password'])){
-                //setcookie('IDuser', $data['ID'], time() + 365*24*3600, null, null, false, true);
-                $_SESSION['Role'] = $data['role_user'];
+                $this->Role = $data['role_user'];
+                $this->FirstName = $data['name_user'];
+                $this->ID = $data['id_user'];
                 return True;
 
             }

@@ -1,5 +1,5 @@
 
-<h1>Bienvenue</h1>
+<h1>Bienvenue <?php if(isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']; ?></h1>
 <h2>Gérer ma maison</h2>
 
 <div id="bienvenue">

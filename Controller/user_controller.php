@@ -20,6 +20,9 @@ class UsersController{
             $user = new Users();
             $connect = $user->connect($Email, $Password);
             if ($connect){
+                setcookie('IDuser', $user->getID(), time() + 24*3600, null, null, false, true);
+                $_SESSION['Role'] = $user->getRole();
+                $_SESSION['FirstName'] = $user->getFirstName();
                 header('Location: index.php?controller=pages&action=home_user');
             }
             else{
