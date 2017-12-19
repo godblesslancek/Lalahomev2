@@ -37,6 +37,7 @@ if (array_key_exists($controller, $controller_rh)) {
     }
 }
 
+// Definition du titre de la page en fonction de l'action demande
 if ($controller== 'pages'){
     switch ($action):
         case 'login':
