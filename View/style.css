@@ -2,8 +2,8 @@ body
 {
    /* background-color: rgba(246, 253, 255, 0.979);*/
     color: black;
-    background: url("Content/images/Back.png") no-repeat center fixed;
-    background-size: cover; /* prend toute la page*/
+    background-image: url("Content/images/Maison.png");
+    background-attachment: fixed; /* Le fond restera fixe */
 }
 h1,h2,h3,h4
 {
@@ -16,7 +16,7 @@ h1,h2,h3,h4
 {
  /*   background-color: rgba(246, 253, 255, 0.979);*/
 
-    color: white;
+    color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +33,7 @@ margin: 50px;/* Marge extérieure de 50px */
 #acceuil
 {
     
-    color: white;
+    color: rgb(70, 67, 67);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -52,15 +52,7 @@ margin: 50px;/* Marge extérieure de 50px */
     
 }
 
-#Connexion
-{ 
-    line-height:30px; /* distance entre les lignes*/
-    margin: auto;
-    text-align: center;
-    border-radius: 10px; /* bord arrondi*/
-    width: 30%;
-    height:300px;
-    background-color: rgb(181, 217, 241); 
-    box-shadow: 6px 6px 0px rgb(70, 93, 114);
-
+.Connexion
+{
+    align-items: center;  
 }
