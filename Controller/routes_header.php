@@ -50,6 +50,10 @@ if ($controller== 'pages'){
             break;
         case 'error':
             $page_title = 'Erreur';
+            break;
+        case 'Stats':
+            $page_title = 'Statistiques Globales';
+            break;
     endswitch;
 }
 
