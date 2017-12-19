@@ -12,7 +12,7 @@
         <h4>Pièces</h4>
     </div>
     <div class="statistique" >
-        <center><img src="View/Content/images/statistiqueGlobal.png" alt="statistique global" /></center>
-        <h4>Statistique Global</h4>
+        <a href="index.php?controller=pages&action=stats"> <img src="View/Content/images/statistiqueGlobal.png" alt="statistique global" /></a></center>
+        <h4>Statistiques Globales</h4>
     </div>
 </div>

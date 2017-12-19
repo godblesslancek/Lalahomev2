@@ -7,6 +7,7 @@
             <?php
             if (!empty($page_title)) { echo "<title>" . $page_title . "</title>\n";}  ?>
             <link rel="stylesheet" href="View/style.css" />
+
         </head>
 
         <header>
