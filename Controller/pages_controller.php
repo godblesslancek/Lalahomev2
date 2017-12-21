@@ -20,10 +20,46 @@ class PagesController {
     }
 
     public function home_user(){
-        require_once ('View/pages/home_user.php');
+        switch ($_SESSION['Role']){
+            case 'admin':
+                require_once ('View/pages/home_admin.php');
+                break;
+            case 'BM':
+                require_once ('View/pages/home_building_manager.php');
+                break;
+            case 'FM':
+                require_once ('View/pages/home_flat_manager.php');
+                break;
+            case 'FU':
+                require_once ('View/pages/home_flat_user.php');
+                ;
+        }
+
+    }
+
+    public function home_demo(){
+        switch ($_GET['role']){
+            case 'admin':
+                require_once ('View/pages/home_admin.php');
+                break;
+            case 'BM':
+                require_once ('View/pages/home_building_manager.php');
+                break;
+            case 'FM':
+                require_once ('View/pages/home_flat_manager.php');
+                break;
+            case 'FU':
+                require_once ('View/pages/home_flat_user.php');
+                ;
+        }
+
     }
     public function register_user(){
         //require_once ('views/pages/create_user_form.php');
+    }
+
+    public function faq(){
+        require_once ('View/pages/faq.php');
     }
 
     public function stats(){
