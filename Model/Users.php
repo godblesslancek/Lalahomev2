@@ -40,8 +40,8 @@ class Users
     {
         return $this->Role;
     }
-    private $Password;
-    private $id_Appart;
+
+
 
 
     public function connect($Email,$Password){
