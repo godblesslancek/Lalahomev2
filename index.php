@@ -19,6 +19,8 @@ session_start();
 
 // Chargement de l'accès à la base de donnée
 require_once('Model/Database.php');
+// Chargement du helper
+require_once ('Controller/helper.php');
 
 ///
 /// Fonction de routing pour les actions des controllers
