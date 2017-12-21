@@ -23,6 +23,8 @@ class UsersController{
                 setcookie('IDuser', $user->getID(), time() + 24*3600, null, null, false, true);
                 $_SESSION['Role'] = $user->getRole();
                 $_SESSION['FirstName'] = $user->getFirstName();
+                $_SESSION['IDuser'] = $user->getID();
+
                 header('Location: index.php?controller=pages&action=home_user');
             }
             else{
