@@ -26,14 +26,20 @@ class PagesController {
         //require_once ('views/pages/create_user_form.php');
     }
 
+    public function update_user(){}
+
+    public function delete_user(){}
+
     public function stats(){
         require_once ('stats_controller.php');
         $page_stats = new stats_controller();
         $page_stats->example_page();
     }
 
-    public function update_user(){}
-
-    public function delete_user(){}
+    public function messages(){
+        require_once ('messages_controller.php');
+        $mess = new MessageController();
+        $mess->message_page();
+    }
 }
 ?>
