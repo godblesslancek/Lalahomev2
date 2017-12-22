@@ -58,15 +58,15 @@ class PagesController {
         //require_once ('views/pages/create_user_form.php');
     }
 
-<<<<<<< HEAD
+
     public function update_user(){}
 
     public function delete_user(){}
-=======
+
     public function faq(){
         require_once ('View/pages/faq.php');
     }
->>>>>>> master
+
 
     public function stats(){
         require_once ('stats_controller.php');
