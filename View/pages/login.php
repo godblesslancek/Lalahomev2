@@ -1,11 +1,16 @@
 
-<div class="MonEspace" >
-    <center>  <img class="espace" src="View/Content/images/connex.png" alt="espace" />
-</div> </center>
 
-<h1>Mon espace</h1>
+
+
 
 <div id="Connexion">
+
+        <br>
+        <div class="MonEspace" >
+            <center>  <img class="espace" src="View/Content/images/connex.png" alt="espace" />
+        </div> </center>
+
+        <h1>Mon espace</h1>
 
     <center>
 
