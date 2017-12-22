@@ -9,9 +9,9 @@
 ?>
 
 <div class="ftr">
-    <a href='index.php?controller=pages&action=faq'>FAQ</a>
-    <a href="">Nous contacter</a>
-    <a href="">Nous suivre</a>
-    <a href="">Confidentialité</a>
-    <a href="">Cookies</a>
+    <a class='ftr' href='index.php?controller=pages&action=faq'>FAQ</a>
+    <a class='ftr' href="">Nous contacter</a>
+    <a class='ftr' href="">Nous suivre</a>
+    <a class='ftr' href="">Confidentialité</a>
+    <a class='ftr' href="">Cookies</a>
 </div>

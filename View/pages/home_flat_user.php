@@ -12,8 +12,5 @@
         <center><img src="View/Content/images/piece.png" alt="piece" /></center>
         
     </div>
-    <div class="statistique" >
-        <h4>Statistiques Globales</h4>
-        <a href="index.php?controller=pages&action=stats"> <img src="View/Content/images/statistiqueGlobal.png" alt="statistique global" /></a></center>
-    </div>
+
 </div>

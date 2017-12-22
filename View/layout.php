@@ -18,7 +18,7 @@
             <?php require_once('Controller/routes.php'); ?>
         </body>
 
-        <footer>
+        <footer class="footer">
             <?php require_once ('pages/footer.php')?>
         </footer>
 

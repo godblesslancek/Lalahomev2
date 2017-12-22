@@ -62,19 +62,20 @@ h1,h2,h3,h4
 }
 
 .ftr {
-    height: auto;
-    color: white;
+    margin: 0;
     display: flex;
+    width: auto;
+    color: white;
     justify-content: space-around;
     font-family: arial narrow;
 }
 
-a {
+a.ftr {
     color: white;
     text-decoration: none;
 }
 
-footer {
+.footer {
     display: table-row;
     height: 1px;
 }
