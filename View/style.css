@@ -1,22 +1,28 @@
 body
 {
-   /* background-color: rgba(246, 253, 255, 0.979);*/
-    color: black;
-    background-image: url("Content/images/Maison.png");
-    background-attachment: fixed; /* Le fond restera fixe */
+    /* background-color: rgba(246, 253, 255, 0.979);*/
+    color: white;
+    background: url("../View/Content/images/Back.png") no-repeat center fixed;
+    background-size: cover; /* prend toute la page*/
 }
 h1,h2,h3,h4
 {
     text-align: center;
-    font-family: Impact, "Arial Black", Arial, Verdana, sans-serif; /* Impact, si marche pas Arial Black... */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, "Arial Black", Arial, Verdana, sans-serif; /* Impact, si marche pas Arial Black... */
+}
+
+h5
+{
+    text-align: left ;
     
+    font-family: 'Arial Narrow', Arial, sans-serif, "Arial Black", Arial, Verdana, sans-serif; /* Impact, si marche pas Arial Black... */
 }
 
 #header
 {
- /*   background-color: rgba(246, 253, 255, 0.979);*/
+    /*   background-color: rgba(246, 253, 255, 0.979);*/
 
-    color: black;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,35 +30,60 @@ h1,h2,h3,h4
 
 .element1, .element2, .element3
 {
-width: 300px;
-text-align: justify;
-padding: 12px;
-margin: 50px;/* Marge extérieure de 50px */
+    width: 300px;
+    text-align: justify;
+    padding: 12px;
+    margin: 50px;/* Marge extérieure de 50px */
 }
 
 #acceuil
 {
-    
-    color: rgb(70, 67, 67);
+
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+
 }
 
 #bienvenue
 {
-    
-    color: rgb(70, 67, 67);
+
+    color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
     margin: 100px;
-    
 }
 
-.Connexion
+#Connexion
 {
-    align-items: center;  
+    line-height:30px; /* distance entre les lignes*/
+    color: black;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px; /* bord arrondi*/
+    width: 30%;
+    height:300px;
+    background-color: rgb(181, 217, 241);
+    box-shadow: 6px 6px 0px rgb(70, 93, 114);
+
 }
+
+.ftr {
+
+}
+
+a.ftr {
+    color: white;
+    text-decoration: none;
+}
+
+.footer {
+    display: table-row;
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    font-family: arial narrow;
+
+}
+
