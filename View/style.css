@@ -1,15 +1,14 @@
 body
 {
    /* background-color: rgba(246, 253, 255, 0.979);*/
-    color: black;
-    background: url("Content/images/Back.png") no-repeat center fixed;
+    color: white;
+    background: url("View/Content/images/Back.png") no-repeat center fixed;
     background-size: cover; /* prend toute la page*/
 }
 h1,h2,h3,h4
 {
     text-align: center;
-    font-family: Impact, "Arial Black", Arial, Verdana, sans-serif; /* Impact, si marche pas Arial Black... */
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, "Arial Black", Arial, Verdana, sans-serif; /* Impact, si marche pas Arial Black... */ 
 }
 
 #header
@@ -24,10 +23,10 @@ h1,h2,h3,h4
 
 .element1, .element2, .element3
 {
-width: 300px;
-text-align: justify;
-padding: 12px;
-margin: 50px;/* Marge extérieure de 50px */
+    width: 300px;
+    text-align: justify;
+    padding: 12px;
+    margin: 50px;/* Marge extérieure de 50px */
 }
 
 #acceuil
@@ -43,13 +42,10 @@ margin: 50px;/* Marge extérieure de 50px */
 #bienvenue
 {
     
-    color: rgb(70, 67, 67);
+    color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
     margin: 100px;
-    
 }
 
 #Connexion
