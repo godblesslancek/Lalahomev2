@@ -54,6 +54,9 @@ if ($controller== 'pages'){
         case 'Stats':
             $page_title = 'Statistiques Globales';
             break;
+        case 'register_user':
+            $page_title = 'Creation Utilisateur';
+            break;
     endswitch;
 }
 

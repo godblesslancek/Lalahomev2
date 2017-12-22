@@ -41,24 +41,28 @@ class UsersController{
     private function checkPost($Post_Array){
 
         foreach ($Post_Array as $key){
-            if(!isset($_POST[$key]) && empty($_POST[$key])){
-                return False;
+            if(!isset($_POST[$key]) || empty($_POST[$key])){
+                return false;
             }
         }
-        return True;
+        return true;
     }
 
     public function register(){
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
+        
+        // debug
+        echo "<p>inside register</p>";
 
-        if ( $this->checkPost($post_params)) {
-
+        if ($this->checkPost($post_params)) { // Si les données sont définies
             if ($_POST['Password'] != $_POST['Password_Verif']) {
-                $error = 'Password does not match';
+                // $error = 'Password does not match';
 
+                // Redirection
                 $controller = 'pages';
                 $action = 'register_user';
+                header('Location: index.php?controller='.$controller.'&action='.$action.'&error=1');
 
             } else {
 
@@ -71,16 +75,21 @@ class UsersController{
                     "Phone" => $_POST['Phone'],
                     "Password" => $_POST['Password'],
                     'Role' => $_POST['Role']
-
                 ];
 
-                $user->register_user($user_params);
+                $user->create_user($user_params);
 
-
+                // Redirection
                 $controller = 'pages';
                 $action = 'home';
-
+                header('Location: index.php?controller='.$controller.'&action='.$action);
             }
+        } else { // Le cas échéant
+            
+            // Redirection
+            $controller = 'pages';
+            $action = 'register_user';
+            header('Location: index.php?controller='.$controller.'&action='.$action.'&error=2');
         }
 
 

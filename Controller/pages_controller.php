@@ -23,7 +23,9 @@ class PagesController {
         require_once ('View/pages/home_user.php');
     }
     public function register_user(){
-        //require_once ('views/pages/create_user_form.php');
+        require_once ('create_user_controller.php');
+        $page_register =new create_user_controller();
+        $page_register->register_page();
     }
 
     public function stats(){
