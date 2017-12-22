@@ -13,9 +13,10 @@ $data = array(
 );
 $labels = array("January", "February", "March", "April", "May", "June", "July");
 $colors = array(
-    array('backgroundColor' => 'rgba(28,116,190,.8)', 'borderColor' => 'blue'),
-    array('backgroundColor' => '#f2b21a', 'borderColor' => '#e5801d'),
-    array('backgroundColor' => array('blue', 'purple', 'red', 'black', 'brown', 'pink', 'green'))
+    array('backgroundColor' => 'rgb(117, 194, 239)', 'borderColor' => '#ffffff'),
+    array('backgroundColor' => '#f2b21a', 'borderColor' => '#ffffff'),
+    array('backgroundColor' => array('blue', 'purple', 'red', 'black', 'brown', 'pink', 'green')),
+    array('backgroundColor' => '#ffffff', 'borderColor' => '#ffffff')
 );
 
 //There is a bug in Chart.js that ignores canvas width/height if responsive is not set to false
