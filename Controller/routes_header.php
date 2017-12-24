@@ -9,20 +9,21 @@
 // Routeur permettant de gérer les actions qui nécessitent d'être placé avant le HEADER HTTP
 
 //Liste des controllers autorisés et de leurs actions by default
-$controller_rh = array('user' => ['connect']);
+$controller_rh = array('user' => ['connect'], 'messages' => ['send']);
 
 
 // Si l'utilisateur est connecté on rajoute au tableaux les actions possibles
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],
+                'messages' => ['send']);
             break;
         case 'FU':
             $controller_rh = array('user' => ['connect', 'disconnect']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send']);
             break;
         case 'BM':
             $controller_rh = array('user' => ['connect', 'disconnect']);

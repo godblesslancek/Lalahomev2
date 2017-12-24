@@ -16,6 +16,7 @@ class Users
     private $Email;
     private $Phone;
     private $Role;
+    private $id_flat;
 
     /**
      * @return mixed
@@ -53,7 +54,6 @@ class Users
         $stmt->execute();
         $row = $stmt->get_result();
         $stmt->free_result();
-        $stmt->close();
         if ($row->num_rows != 1){
             $error =   "An error as occured, too many users with the same email";
             return False;
@@ -87,7 +87,6 @@ class Users
         $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
         $stmt->execute();
         $stmt->close();
-        $conn->close();
     }
     
     public function update_user($user_param){
@@ -98,9 +97,39 @@ class Users
         $stmt->bind_param("sssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone']);
         $stmt->execute();
         $stmt->close();
-        $conn->close();
+
+    }
+
+    public function setCurrentUser($userid){
+        $db = Database::getInstance();
+        $conn = $db->getConnection();
+
+        $stmt = $conn->prepare('SELECT * from user WHERE id_user = ?');
+        $stmt->bind_param('i', $userid);
+        $stmt->execute();
+        $data = $stmt->get_result()->fetch_assoc();
+        $stmt->free_result();
+        $this->FirstName = $data['name_user'];
+        $this->LastName = $data['surname_user'];
+        $this->Role = $data['role_user'];
+        $this->Email = $data['email'];
+        $this->Phone = $data['phone'];
+        $this->id_flat = $data['id_flat'];
 
 
+    }
+
+    public function getIDBM(){
+
+        $db = Database::getInstance();
+        $conn = $db->getConnection();
+
+        $stmt = $conn->prepare('SELECT * FROM flat INNER JOIN building ON building.id_building = flat.id_building WHERE id_flat = ?');
+        $stmt->bind_param("i", $this->id_flat);
+        $stmt->execute();
+        $row = $stmt->get_result();
+        $data = $row->fetch_assoc();
+        return $data['id_user'];
 
     }
 

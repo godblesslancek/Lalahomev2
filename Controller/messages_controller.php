@@ -14,13 +14,23 @@ class MessageController{
 
     public function message_page(){
         require_once ('View/pages/messages.php');
+    }
 
+    public function send(){
         if(helper::checkPost(array('Message')) && helper::checkSession(array('IDuser'))){
+            $currentUser = new Users();
+            $currentUser->setCurrentUser($_SESSION['IDuser']);
 
-            $message = new Message(2,1);
+            $message = new Message($_SESSION['IDuser'],$currentUser->getIDBM());
 
             $message->add_message($_POST['Message']);
 
+        }
+    }
+
+    public function retreive(){
+        if(helper::checkSession(array('IDuser'))){
+            
 
         }
     }

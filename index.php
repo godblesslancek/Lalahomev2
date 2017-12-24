@@ -42,6 +42,11 @@ function call($controller, $action) {
         case 'user':
             require_once('Model/Users.php');
             $_controller = new UsersController();
+            break;
+        case 'messages':
+            require_once ('Model/Message.php');
+            require_once ('Model/Users.php');
+            $_controller = new MessageController();
     }
 
     // Appel de l'action

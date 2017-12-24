@@ -22,7 +22,7 @@
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
              break;
          case 'FM':
-             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq', 'messages']);
              break;
          case 'BM':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
