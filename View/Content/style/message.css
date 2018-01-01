@@ -11,6 +11,7 @@
 .darker {
     border-color: #ccc;
     background-color: #adadad;
+    text-align: right;
 }
 
 /* Clear floats */
@@ -38,13 +39,13 @@
 /* Style time text */
 .time-right {
     float: right;
-    color: #aaa;
+    color: #FFFFFF;
 }
 
 /* Style time text */
 .time-left {
     float: left;
-    color: #907599;
+    color: #FFFFFF;
 }
 
 div.left{
@@ -73,3 +74,19 @@ div.left{
 .buttonsend{
     display: block;
 }
+
+.conversation {
+    border: 2px solid #dedede;
+    background-color: rgba(39, 36, 241, 0.35);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.conversation img {
+    float: left;
+    max-width: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+

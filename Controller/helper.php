@@ -26,4 +26,14 @@ class helper
         }
         return True;
     }
+
+    public static function checkGet($Get_Array){
+
+        foreach ($Get_Array as $key){
+            if(!isset($_GET[$key]) && empty($_GET[$key])){
+                return False;
+            }
+        }
+        return True;
+    }
 }
