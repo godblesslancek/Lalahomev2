@@ -65,10 +65,12 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action     = 'home';
 }
 
-
-
+if($controller == "messages"){
+    call($controller,$action);
+}
+else
 // Chargement du layout
-require_once('View/layout.php');
+    require_once('View/layout.php');
 
 ?>
 
