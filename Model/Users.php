@@ -29,6 +29,14 @@ class Users
     /**
      * @return mixed
      */
+    public function getLastName()
+    {
+        return $this->LastName;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getFirstName()
     {
         return $this->FirstName;
@@ -115,6 +123,7 @@ class Users
         $this->Email = $data['email'];
         $this->Phone = $data['phone'];
         $this->id_flat = $data['id_flat'];
+        $this->ID = $userid;
 
 
     }
