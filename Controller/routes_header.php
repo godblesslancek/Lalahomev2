@@ -23,10 +23,10 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             $controller_rh = array('user' => ['connect', 'disconnect']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send','retreivemessage', 'GetSession']);
             break;
         case 'BM':
-            $controller_rh = array('user' => ['connect', 'disconnect']);
+            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);
     endswitch;
 }
 
