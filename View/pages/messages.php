@@ -7,17 +7,23 @@
  */
 ?>
 
-
-
-<div id="messages">
+<div id="panel-left" class="left">
 
 </div>
 
-<form method="post">
-    <label for="Message">Message :</label>
-    <textarea id="Message" name="Message"></textarea>
-    <br>
-    <input id="btn_send_message" value="Envoyer" type="submit">
-</form>
+<div id="main">
+
+    <div id="messages"></div>
+    <form method="post">
+        <textarea  class="message input" id="Message" name="Message" placeholder="Votre message..."></textarea>
+        <input class="buttonsend" id="btn_send_message" value="Envoyer" type="submit">
+    </form>
+</div>
+
+
+
+
+
 
 <script src="View/Content/js/messages.js"></script>
+<link rel="stylesheet" href="View/Content/style/message.css">
