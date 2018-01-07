@@ -13,7 +13,9 @@
 
 <div id="main">
 
-    <div id="messages"></div>
+    <div id="messages">
+
+    </div>
     <form method="post">
         <textarea  class="message input" id="Message" name="Message" placeholder="Votre message..."></textarea>
         <input class="buttonsend" id="btn_send_message" value="Envoyer" type="submit">

@@ -18,6 +18,7 @@ $('#btn_send_message').click(function(e){
                 date = new Date();
                 message = escapeHtml($('#Message').val())
                 addmessage(true,message, date.toUTCString()); // on ajoute le message dans la zone prévue
+                $('#Message').val('');
             }
         });
 
