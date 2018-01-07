@@ -26,7 +26,7 @@ $('#btn_send_message').click(function(e){
 });
 
 function getmessage(IDConv) {
-    var IDUser = getSession('IDuser');
+    var IDUser = getCookie('IDuser');
     $.ajax({
         url : "index.php", // on donne l'URL du fichier de traitement
         type : "GET", // la requête est de type POST
@@ -97,31 +97,4 @@ function addconversation(display_name, role, iduser){
 }
 //Deprecate
 
-// TODO
-// use a cookie parser
-function getSession(name){
-    var result;
-    $.ajax({
-        async : false,
-        url : "index.php", // on donne l'URL du fichier de traitement
-        type : "GET", // la requête est de type POST
-        data : "controller=messages&action=GetSession", // et on envoie nos données,
-        success: function (data) {
-            sessions = JSON.parse(data);
-            if (name in sessions){
-                result = sessions[name];
-            }
-            else
-                result =  null;
-        }
-    });
 
-    return result;
-
-}
-
-function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-}

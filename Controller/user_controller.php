@@ -20,7 +20,7 @@ class UsersController{
             $user = new Users();
             $connect = $user->connect($Email, $Password);
             if ($connect){
-                setcookie('IDuser', $user->getID(), time() + 24*3600, null, null, false, true);
+                setcookie('IDuser', $user->getID(), time() + 24*3600, "/", null, false, false);
                 $_SESSION['Role'] = $user->getRole();
                 $_SESSION['FirstName'] = $user->getFirstName();
                 $_SESSION['IDuser'] = $user->getID();
