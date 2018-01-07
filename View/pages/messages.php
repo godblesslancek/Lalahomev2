@@ -20,10 +20,9 @@
     </form>
 </div>
 
-
-
-
-
+<div id="hiddenfield">
+    <input type="hidden" id="IDuserConv" value="">
+</div>
 
 <script src="View/Content/js/messages.js"></script>
 <link rel="stylesheet" href="View/Content/style/message.css">
