@@ -48,31 +48,7 @@ class Message
         return $rows;
 
     }
-
-    public function get_conversations(){
-        $stmt = $this->conn->prepare('SELECT DISTINCT id_sender, id_receiver FROM messages WHERE (id_receiver = ?) OR (id_sender = ?) ORDER BY datetime DESC');
-        $stmt->bind_param("ii", $this->ID_receiver,$this->ID_receiver);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        $stmt->free_result();
-        $stmt->close();
-
-        $rows = array();
-        while ($row = $res->fetch_assoc()) {
-            if (!in_array($row['id_sender'],$rows))
-                if($row['id_sender'] != $this->ID_receiver)
-                    $rows[] = $row['id_sender'];
-        }
-        return $rows;
-    }
-
-
-    //Helper for JS
-
-    public static function GetSession(){
-        return json_encode($_SESSION);
-    }
-
+    
 
 
 }
