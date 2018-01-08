@@ -15,6 +15,7 @@ class Building
     private $nb_of_flats;
     private $address;
 
+    private $conn;
 
     public function getID()
     {return $this->ID;}
@@ -31,32 +32,29 @@ class Building
 
     public function getaddress()
     {return $this->address;}
-    
 
 
-    name_building	nb_of_flats	address	id_user
-
+    public function __construct()
+    {
+        $db = Database::getInstance();
+        $this->conn = $db->getConnection();
+    }
 
 
     public function create_building($building_param){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-        $stmt = $conn->prepare('INSERT INTO building (name_building,nb_of_flats,address,id_user) VALUES (?,?,?,?)');
+        $stmt = $this->conn->prepare('INSERT INTO building (name_building,nb_of_flats,address,id_user) VALUES (?,?,?,?)');
         $stmt->bind_param("sisi", $building_param['name_building'],$building_param['nb_of_flats'] , $building_param['address'], $building_param['id_user']);
         $stmt->execute();
         $stmt->close();
-        $conn->close();
     }
     
     public function update_building($building_param){
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-        $stmt = $conn->prepare('UPDATE building SET name_building = ?, nb_of_flats = ?, address = ?, id_user = ? WHERE id = ?')     ;
+
+        $stmt = $this->conn->prepare('UPDATE building SET name_building = ?, nb_of_flats = ?, address = ?, id_user = ? WHERE id = ?')     ;
         $stmt->bind_param("sisi", $building_param['name_building'],$building_param['nb_of_flats'] , $building_param['address'], $building_param['id_user']);
         $stmt->execute();
         $stmt->close();
-        $conn->close();
 
 
 

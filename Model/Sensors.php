@@ -6,6 +6,8 @@ class Sensor
     private $type_sensor;
     private $id_room;
 
+    private $conn;
+
     
     public function getID()
     {
@@ -22,29 +24,27 @@ class Sensor
         return $this->id_room;
     }
 
+    public function __construct()
+    {
+        $db = Database::getInstance();
+        $this->conn = $db->getConnection();
+    }
 
 
     public function create_sensor($sensor_param){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-        $stmt = $conn->prepare('INSERT INTO sensor (type_sensor,id_room) VALUES (?,?)');
+        $stmt = $this->conn->prepare('INSERT INTO sensor (type_sensor,id_room) VALUES (?,?)');
         $stmt->bind_param("si", $sensor_param['type_sensor'],$sensor_param['id_room'] );
         $stmt->execute();
         $stmt->close();
-        $conn->close();
     }
     
     public function update_sensor($sensor_param){
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-        $stmt = $conn->prepare('UPDATE sensor SET type_sensor = ?, id_room = ? WHERE id = ?')     ;
+
+        $stmt = $this->conn->prepare('UPDATE sensor SET type_sensor = ?, id_room = ? WHERE id = ?')     ;
         $stmt->bind_param("si", $sensor_param['type_sensor'],$sensor_param['id_room'] );
         $stmt->execute();
         $stmt->close();
-        $conn->close();
-
-
 
     }
 

@@ -45,7 +45,7 @@ class Effector
         $stmt->bind_param("si", $effector_param['type_effector'],$effector_param['id_room'] );
         $stmt->execute();
         $stmt->close();
-        
+
 
     }
 
