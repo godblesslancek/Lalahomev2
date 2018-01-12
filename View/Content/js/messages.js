@@ -33,7 +33,7 @@ function getmessage(IDConv) {
         type : "GET", // la requête est de type POST
         data : "controller=messages&action=retreivemessage&IDconv=" + IDConv, // et on envoie nos données,
         success: function (data) {
-
+            console.log(data)
             var messages = JSON.parse(data);
             $.each(messages, function(index, obj){
                 if (IDUser == obj.id_sender)

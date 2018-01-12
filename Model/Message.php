@@ -40,7 +40,6 @@ class Message
         $res = $stmt->get_result();
         $stmt->free_result();
         $stmt->close();
-
         $rows = array();
         while ($row = $res->fetch_assoc()) {
             $rows[] = $row;

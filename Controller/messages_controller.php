@@ -33,9 +33,9 @@ class MessageController{
             $currentUser = new Users();
             $currentUser->setCurrentUser($_SESSION['IDuser']);
             $message = new Message($_SESSION['IDuser'],$_GET['IDconv']);
-            echo json_encode($message->get_messages());
-
-        }
+            $messages = $message->get_messages();
+            echo json_encode($messages);
+        }   
     }
 
     public function retreiveconversation(){
