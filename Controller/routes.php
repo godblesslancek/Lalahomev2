@@ -12,20 +12,28 @@
   //Liste des controllers autorisés et de leurs actions
   $controllers = array('pages' => ['home', 'error', 'login', 'faq']);
 
-// Si l'utilisateur est connecté on rajoute au tableaux les actions possibles
+// Si l'utilisateur est connecté on rajoute au tableau les actions possibles
  if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
      switch ($_SESSION['Role']):
          case 'admin':
+<<<<<<< HEAD
              $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user', 'stats','faq','home_demo','users']);
+=======
+             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user', 'stats', 'faq', 'messages']);
+>>>>>>> master
              break;
          case 'FU':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
              break;
          case 'FM':
+<<<<<<< HEAD
              $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq','users']);
+=======
+             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq', 'messages']);
+>>>>>>> master
              break;
          case 'BM':
-             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages']);
      endswitch;
  }
 

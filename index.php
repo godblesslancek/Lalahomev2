@@ -19,6 +19,8 @@ session_start();
 
 // Chargement de l'accès à la base de donnée
 require_once('Model/Database.php');
+// Chargement du helper
+require_once ('Controller/helper.php');
 
 ///
 /// Fonction de routing pour les actions des controllers
@@ -40,6 +42,11 @@ function call($controller, $action) {
         case 'user':
             require_once('Model/Users.php');
             $_controller = new UsersController();
+            break;
+        case 'messages':
+            require_once ('Model/Message.php');
+            require_once ('Model/Users.php');
+            $_controller = new MessageController();
     }
 
     // Appel de l'action
@@ -58,10 +65,12 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action     = 'home';
 }
 
-
-
+if($controller == "messages"){
+    call($controller,$action);
+}
+else
 // Chargement du layout
-require_once('View/layout.php');
+    require_once('View/layout.php');
 
 ?>
 

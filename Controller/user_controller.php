@@ -12,7 +12,7 @@ class UsersController{
 
         $post_params = array('Email', 'Password');
 
-        if ($this->checkPost($post_params)){
+        if (helper::checkPost($post_params)){
 
             $Email = $_POST['Email'];
             $Password = $_POST['Password'];
@@ -20,9 +20,11 @@ class UsersController{
             $user = new Users();
             $connect = $user->connect($Email, $Password);
             if ($connect){
-                setcookie('IDuser', $user->getID(), time() + 24*3600, null, null, false, true);
+                setcookie('IDuser', $user->getID(), time() + 24*3600, "/", null, false, false);
                 $_SESSION['Role'] = $user->getRole();
                 $_SESSION['FirstName'] = $user->getFirstName();
+                $_SESSION['IDuser'] = $user->getID();
+
                 header('Location: index.php?controller=pages&action=home_user');
             }
             else{
@@ -38,6 +40,7 @@ class UsersController{
         header('Location: index.php');
     }
 
+<<<<<<< HEAD
     private function checkPost($Post_Array){
 
         foreach ($Post_Array as $key){
@@ -48,6 +51,8 @@ class UsersController{
         return true;
     }
 
+=======
+>>>>>>> master
     public function register(){
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
@@ -55,7 +60,12 @@ class UsersController{
         // debug
         echo "<p>inside register</p>";
 
+<<<<<<< HEAD
         if ($this->checkPost($post_params)) { // Si les données sont définies
+=======
+        if ( helper::checkPost($post_params)) {
+
+>>>>>>> master
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 // $error = 'Password does not match';
 
@@ -99,7 +109,7 @@ class UsersController{
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
 
-        if ($this->checkPost($post_params)) {
+        if (helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 $error = 'Password does not match';
@@ -128,4 +138,6 @@ class UsersController{
         $action = 'home';
         }
     }
+
+
 }

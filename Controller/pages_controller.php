@@ -64,9 +64,15 @@ class PagesController {
         $page_register->register_page();
     }
 
+
+    public function update_user(){}
+
+    public function delete_user(){}
+
     public function faq(){
         require_once ('View/pages/faq.php');
     }
+
 
     public function stats(){
         require_once ('stats_controller.php');
@@ -74,6 +80,7 @@ class PagesController {
         $page_stats->example_page();
     }
 
+<<<<<<< HEAD
     public function update_user(){
          require_once ('update_user_controller.php');
         $page_update =new update_user_controller();
@@ -81,5 +88,12 @@ class PagesController {
     }
 
     public function delete_user(){}
+=======
+    public function messages(){
+        require_once ('messages_controller.php');
+        $mess = new MessageController();
+        $mess->message_page();
+    }
+>>>>>>> master
 }
 ?>
