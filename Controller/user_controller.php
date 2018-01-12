@@ -12,7 +12,7 @@ class UsersController{
 
         $post_params = array('Email', 'Password');
 
-        if ($this->checkPost($post_params)){
+        if (helper::checkPost($post_params)){
 
             $Email = $_POST['Email'];
             $Password = $_POST['Password'];
@@ -40,21 +40,11 @@ class UsersController{
         header('Location: index.php');
     }
 
-    private function checkPost($Post_Array){
-
-        foreach ($Post_Array as $key){
-            if(!isset($_POST[$key]) && empty($_POST[$key])){
-                return False;
-            }
-        }
-        return True;
-    }
-
     public function register(){
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
 
-        if ( $this->checkPost($post_params)) {
+        if ( helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 $error = 'Password does not match';
@@ -92,7 +82,7 @@ class UsersController{
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
 
-        if ($this->checkPost($post_params)) {
+        if (helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 $error = 'Password does not match';
@@ -121,4 +111,6 @@ class UsersController{
         $action = 'home';
         }
     }
+
+
 }
