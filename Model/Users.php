@@ -91,18 +91,14 @@ class Users
 
 
     public function create_user($user_param){
-<<<<<<< HEAD
+
         $db = Database::getInstance();
         $conn = $db->getConnection();
-        $password = password_hash($user_param['Password'], PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO user (surname_user, name_user, email, phone, role_user, password) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("ssssss", $user_param['LastName'], $user_param['FirstName'], $user_param['Email'], $user_param['Phone'], $user_param['Role'], $password);
-=======
 
         $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
         $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
->>>>>>> master
+
         $stmt->execute();
         $stmt->close();
     }
@@ -114,9 +110,6 @@ class Users
         $stmt->bind_param("sssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone']);
         $stmt->execute();
         $stmt->close();
-<<<<<<< HEAD
-        $conn->close();
-=======
 
     }
 
@@ -134,8 +127,7 @@ class Users
         $this->id_flat = $data['id_flat'];
         $this->ID = $userid;
 
-
->>>>>>> master
+        
     }
 
     public function getIDBM(){
