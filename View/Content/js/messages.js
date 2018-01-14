@@ -30,11 +30,9 @@ $( document ).ready(function() {
             $.ajax({
                 url: "index.php", // on donne l'URL du fichier de traitement
                 type: "GET", // la requête est de type POST
-                data: "controller=messages&action=getUser", // et on envoie nos données,
+                data: "controller=messages&action=getUser&search=" + request.term, // et on envoie nos données,
                 success: function (data) {
-
-                    console.log(data);
-                    response(data);
+                    response(JSON.parse(data));
                 }
             });
         }
