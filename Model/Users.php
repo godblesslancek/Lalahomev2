@@ -127,7 +127,7 @@ class Users
         $this->id_flat = $data['id_flat'];
         $this->ID = $userid;
 
-        
+
     }
 
     public function getIDBM(){
