@@ -1,1 +1,5 @@
-<h1>hello baguidi gadjibi </h1>
+<?php
+
+
+
+echo 'bonjour fifi';

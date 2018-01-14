@@ -27,6 +27,9 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             break;
         case 'BM':
             $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);
+            break;
+        case 'tester':
+            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);     
     endswitch;
 }
 
@@ -54,6 +57,9 @@ if ($controller== 'pages'){
             break;
         case 'Stats':
             $page_title = 'Statistiques Globales';
+            break;
+        case 'test':
+            $page_title = 'Page de test';
             break;
     endswitch;
 }

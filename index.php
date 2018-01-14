@@ -47,6 +47,7 @@ function call($controller, $action) {
             require_once ('Model/Message.php');
             require_once ('Model/Users.php');
             $_controller = new MessageController();
+
     }
 
     // Appel de l'action
