@@ -48,9 +48,6 @@ class Message
         return $rows;
 
     }
-    
-
-
 }
 
 class Conversation

@@ -18,6 +18,8 @@ class Users
     private $Role;
     private $id_flat;
 
+    private $conn;
+
     /**
      * @return mixed
      */
@@ -50,14 +52,17 @@ class Users
         return $this->Role;
     }
 
-
+    public function __construct()
+    {
+        $db = Database::getInstance();
+        $this->conn = $db->getConnection();
+    }
 
 
     public function connect($Email,$Password){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-        $stmt = $conn->prepare('SELECT * from user WHERE email = ? ');
+
+        $stmt = $this->conn->prepare('SELECT * from user WHERE email = ? ');
         $stmt->bind_param('s', $Email);
         $stmt->execute();
         $row = $stmt->get_result();
@@ -88,20 +93,17 @@ class Users
 
     public function create_user($user_param){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
         $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
-        $stmt = $conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
+        $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
         $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
         $stmt->execute();
         $stmt->close();
     }
     
     public function update_user($user_param){
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
+
         $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
-        $stmt = $conn->prepare('UPDATE user SET surname_user = ?, name_user = ?, email = ?, phone = ? WHERE id = ?')     ;
+        $stmt = $this->conn->prepare('UPDATE user SET surname_user = ?, name_user = ?, email = ?, phone = ? WHERE id = ?')     ;
         $stmt->bind_param("sssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone']);
         $stmt->execute();
         $stmt->close();
@@ -109,14 +111,11 @@ class Users
     }
 
     public function setCurrentUser($userid){
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
 
-        $stmt = $conn->prepare('SELECT * from user WHERE id_user = ?');
+        $stmt = $this->conn->prepare('SELECT * from user WHERE id_user = ?');
         $stmt->bind_param('i', $userid);
         $stmt->execute();
         $data = $stmt->get_result()->fetch_assoc();
-        $stmt->free_result();
         $this->FirstName = $data['name_user'];
         $this->LastName = $data['surname_user'];
         $this->Role = $data['role_user'];
@@ -124,16 +123,12 @@ class Users
         $this->Phone = $data['phone'];
         $this->id_flat = $data['id_flat'];
         $this->ID = $userid;
-
-
     }
+
 
     public function getIDBM(){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-
-        $stmt = $conn->prepare('SELECT * FROM flat INNER JOIN building ON building.id_building = flat.id_building WHERE id_flat = ?');
+        $stmt = $this->conn->prepare('SELECT * FROM flat INNER JOIN building ON building.id_building = flat.id_building WHERE id_flat = ?');
         $stmt->bind_param("i", $this->id_flat);
         $stmt->execute();
         $row = $stmt->get_result();
@@ -142,6 +137,21 @@ class Users
 
     }
 
+    public function getUsers(){
+
+        $stmt = $this->conn->prepare('SELECT user.name_user, user.surname_user FROM user
+                                          INNER JOIN flat ON user.id_flat = flat.id_flat
+                                          INNER JOIN building ON flat.id_building = building.id_building
+                                        WHERE building.id_user = ?');
+        $stmt->bind_param("i", $this->ID);
+        $stmt->execute();
+        $res= $stmt->get_result();
+        $rows = array();
+        while ($row = $res->fetch_assoc()) {
+            $rows[] = $row['name_user'] . ' ' . $row['surname_user'];
+        }
+        return $rows;
+    }
 
 }
 

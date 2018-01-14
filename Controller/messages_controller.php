@@ -64,10 +64,15 @@ class MessageController{
         }
 
     }
+    public function getUser(){
+        if (helper::checkSession(array('IDuser'))){
+            $currentuser = new Users();
+            $currentuser->setCurrentUser($_SESSION["IDuser"]);
+            echo json_encode($currentuser->getUsers());
+        }
+        else{
+            echo (json_encode("coucouuu"));
+        }
 
-    //Helper for JS
-
-    public function GetSession(){
-        echo json_encode($_SESSION);
     }
 }

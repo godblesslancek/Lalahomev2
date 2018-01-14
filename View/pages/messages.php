@@ -13,6 +13,9 @@
 
 <div id="main">
 
+    <div id="searchfielddiv" class="ui-widget">
+        <input type="text" id="search-box" placeholder="Utilisateur.....">
+    </div>
     <div id="messages">
 
     </div>
