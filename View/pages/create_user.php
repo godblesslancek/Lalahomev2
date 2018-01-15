@@ -51,17 +51,7 @@
                         <option value="BM">Gestionnaire Immeuble</option>
                     </select>
                 </p>
-                <button type="submit">S'enregistrer</button>              
-                <p>
-                  <?php 
-                        if(isset($_GET['error'])) {
-                            if($_GET['error'] == 1) $error = "mots de passe différents";
-                            if($_GET['error'] == 2) $error = "veuillez renseigner tous les champs";
-
-                            echo $error;
-                        }
-                    ?>  
-                </p>
+                <button type="submit">S'enregistrer</button>
             </fieldset>
 
             </div>

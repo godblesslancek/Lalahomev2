@@ -155,6 +155,35 @@ class Users
         return $rows;
     }
 
+    public function getUsersList($name){
+
+        switch ($this->Role) {
+            case 'admin':
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
+                $stmt->bind_param("s", $name);
+                break;
+            case 'FM':
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE user.id_flat = ? AND CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
+                $stmt->bind_param("si", $name, $this->id_flat);
+                break;
+            case 'BM':
+                $stmt = $this->conn->prepare('SELECT * FROM user
+                                          INNER JOIN flat ON user.id_flat = flat.id_flat
+                                          INNER JOIN building ON flat.id_building = building.id_building
+                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%")  LIMIT 20 ');
+                $stmt->bind_param("is", $this->ID, $name);
+                break;
+        }
+        
+        $stmt->execute();
+        $res= $stmt->get_result();
+        $rows = array();
+        while ($row = $res->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
 }
 
 ?>

@@ -44,18 +44,15 @@ class UsersController{
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
         
-        // debug
-        echo "<p>inside register</p>";
-
         if ( helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 // $error = 'Password does not match';
 
                 // Redirection
-                $controller = 'pages';
-                $action = 'register_user';
-                header('Location: index.php?controller='.$controller.'&action='.$action.'&error=1');
+                //$controller = 'pages';
+                //$action = 'register_user';
+                //header('Location: index.php?controller='.$controller.'&action='.$action.'&error=1');
 
             } else {
 
@@ -71,18 +68,10 @@ class UsersController{
                 ];
 
                 $user->create_user($user_params);
-
-                // Redirection
-                $controller = 'pages';
-                $action = 'home';
-                header('Location: index.php?controller='.$controller.'&action='.$action);
+                return true;
             }
-        } else { // Le cas échéant
-            
-            // Redirection
-            $controller = 'pages';
-            $action = 'register_user';
-            header('Location: index.php?controller='.$controller.'&action='.$action.'&error=2');
+        } else {
+            return false;
         }
 
 
@@ -119,6 +108,17 @@ class UsersController{
             }
         $controller = 'pages';
         $action = 'home';
+        }
+    }
+    public function userList(){
+         if(helper::checkSession(array('IDuser')) && helper::checkGet(array('name'))){
+            $currentUser = new Users();
+            $currentUser->setCurrentUser($_SESSION['IDuser']);
+            if ($_GET['name'] == "undefined")
+                $name  = " ";
+            else
+                $name = $_GET['name'];
+            echo json_encode($currentUser->getUsersList($name));
         }
     }
 

@@ -59,9 +59,11 @@ class PagesController {
 
     }
     public function register_user(){
-        require_once ('create_user_controller.php');
-        $page_register =new create_user_controller();
-        $page_register->register_page();
+        require_once ('View/pages/create_user.php');
+    }
+
+    public function userList(){
+        require_once ('View/pages/user_list.php');
     }
 
 
