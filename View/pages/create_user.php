@@ -1,6 +1,7 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <div id="div2">
-    <form method="post" action="index.php?controller=user&action=register">
+<script src="View/Content/js/form-validation.js"></script>
+    <form method="post" action="index.php?controller=user&action=register" id="registration">
         <center>
         <a href="index.php?controller=user&action=register">
         <button type="button" OnClick="alert('Redirection en cours!')">Ajouter</button>
@@ -14,7 +15,7 @@
             <fieldset>
                 <p>
                     <span class="label"><label for="Name">Nom:</label></span>
-                    <span class="controle"><input type="text" class="text" id="Name" name ="LastName" maxlength="20" /></span>
+                    <span class="controle"><input type="text" class="text" id="LastName" name ="LastName" maxlength="20" /></span>
                 </p>
                 <p>
                     <span class="label"><label for="FirstName">Prénom:</label></span>
@@ -52,14 +53,14 @@
                 </p>
                 <button type="submit">S'enregistrer</button>              
                 <p>
-                    <?php 
+                  <?php 
                         if(isset($_GET['error'])) {
                             if($_GET['error'] == 1) $error = "mots de passe différents";
                             if($_GET['error'] == 2) $error = "veuillez renseigner tous les champs";
 
                             echo $error;
                         }
-                    ?>
+                    ?>  
                 </p>
             </fieldset>
 

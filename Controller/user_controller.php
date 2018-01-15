@@ -40,19 +40,6 @@ class UsersController{
         header('Location: index.php');
     }
 
-<<<<<<< HEAD
-    private function checkPost($Post_Array){
-
-        foreach ($Post_Array as $key){
-            if(!isset($_POST[$key]) || empty($_POST[$key])){
-                return false;
-            }
-        }
-        return true;
-    }
-
-=======
->>>>>>> master
     public function register(){
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
@@ -60,12 +47,8 @@ class UsersController{
         // debug
         echo "<p>inside register</p>";
 
-<<<<<<< HEAD
-        if ($this->checkPost($post_params)) { // Si les données sont définies
-=======
         if ( helper::checkPost($post_params)) {
 
->>>>>>> master
             if ($_POST['Password'] != $_POST['Password_Verif']) {
                 // $error = 'Password does not match';
 
