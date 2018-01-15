@@ -17,7 +17,8 @@
                 }
 
             ?>
-            <img src="View/Content/images/logoTech.png" alt="Logo" /> </div>
+            <img src="View/Content/images/logoTech.png" alt="Logo" />
+        </div>
         <div class="MonEspace" >
             <?php
             if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
@@ -28,5 +29,6 @@
             }
 
             ?>
-                <img class="espace" src="View/Content/images/connex.png" alt="espace" /></a> </div>
+                <img class="espace" src="View/Content/images/connex.png" alt="espace" /></a>
+        </div>
 </div>
