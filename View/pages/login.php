@@ -1,8 +1,4 @@
 
-
-
-
-
 <div id="Connexion">
 
         <br>
@@ -18,7 +14,7 @@
             <label for="Email">Adresse e-mail :</label>
             <input id="Email" name="Email" type="email">
             <br>
-            <label for="Password">Mot de passe</label>
+            <label for="Password">Mot de passe :</label>
             <input id="Password" name="Password" type="password">
             <br>
             <input id="btn_connexion" value="Connexion" type="submit">

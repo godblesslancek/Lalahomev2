@@ -36,6 +36,15 @@ h5
     margin: 50px;/* Marge extérieure de 50px */
 }
 
+.messages
+{
+  
+    text-align: justify;
+
+    
+    margin: 10px;/* Marge extérieure de 50px */
+}
+
 #acceuil
 {
 
