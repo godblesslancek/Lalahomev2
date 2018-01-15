@@ -17,6 +17,7 @@ class Users
     private $Phone;
     private $Role;
     private $id_flat;
+    private $conn;
 
     private $conn;
 
@@ -124,7 +125,6 @@ class Users
         $this->id_flat = $data['id_flat'];
         $this->ID = $userid;
     }
-
 
     public function getIDBM(){
 
