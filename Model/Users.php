@@ -19,8 +19,6 @@ class Users
     private $id_flat;
     private $conn;
 
-    private $conn;
-
     /**
      * @return mixed
      */
