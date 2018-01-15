@@ -23,9 +23,6 @@ $( document ).ready(function() {
 
     });
 
-    // Autocomplete
-    $("#search-box").autocomplete({
-
     $('#btn_send_message').click(function(e){
         e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
 
@@ -45,7 +42,6 @@ $( document ).ready(function() {
                 }
             });
         }
-
     });
 
     // Autocomplete
