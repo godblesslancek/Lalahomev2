@@ -137,10 +137,10 @@ class Users
 
     public function getUsers($name){
 
-        $stmt = $this->conn->prepare('SELECT user.name_user, user.surname_user FROM user
+        $stmt = $this->conn->prepare('SELECT user.name_user, user.surname_user, user.role_user FROM user
                                           INNER JOIN flat ON user.id_flat = flat.id_flat
                                           INNER JOIN building ON flat.id_building = building.id_building
-                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%")');
+                                        WHERE building.id_user = ? AND (CONCAT(user.name_user, " ", user.surname_user) LIKE CONCAT("%",?,"%") AND user.role_user <> "FU")');
         $stmt->bind_param("is", $this->ID, $name);
         $stmt->execute();
         $res= $stmt->get_result();
