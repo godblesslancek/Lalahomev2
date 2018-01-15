@@ -2,9 +2,10 @@
 
 class Effector
 {
-    private $ID;
+    public $ID;
     private $type_effector;
     private $id_room;
+    private $value_effector;
 
     private $conn;
 
@@ -37,6 +38,11 @@ class Effector
         $stmt->bind_param("sii", $effector_param['type_effector'],$effector_param['id_room'],$effector_param['value_effector'] );
         $stmt->execute();
         $stmt->close();
+        $this->ID = $this->conn->insert_id;
+        $this->type_effector = $effector_param['type_effector'];
+        $this->id_room = $effector_param['id_room'];
+        $this->value_effector = $effector_param['value_effector'];
+        
     }
     
     public function update_effector($effector_param){
@@ -45,8 +51,9 @@ class Effector
         $stmt->bind_param("sii", $effector_param['type_effector'],$effector_param['id_room'],$effector_param['value_effector'] );
         $stmt->execute();
         $stmt->close();
+    }
     
-    public function update_value_effector($newValue){
+    public function setValue($newValue){
 
         $stmt = $this->conn->prepare('UPDATE effector SET value_effector = ? WHERE id = ?')     ;
         $stmt->bind_param("i", $newValue);
@@ -58,6 +65,7 @@ class Effector
 
 
 }
+
 
 
 

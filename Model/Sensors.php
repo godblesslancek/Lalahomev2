@@ -2,9 +2,10 @@
 
 class Sensor
 {
-    private $ID;
+    public $ID;
     private $type_sensor;
     private $id_room;
+    private $value_sensor;
 
     private $conn;
 
@@ -37,6 +38,11 @@ class Sensor
         $stmt->bind_param("sii", $sensor_param['type_sensor'],$sensor_param['id_room'],$sensor_param['value_sensor'] );
         $stmt->execute();
         $stmt->close();
+        $this->ID = $this->conn->insert_id;
+        $this->type_sensor = $sensor_param['type_sensor'];
+        $this->id_room = $sensor_param['id_room'];
+        $this->value_sensor = $sensor_param['value_sensor'];
+        
     }
     
     public function update_sensor($sensor_param){
@@ -45,8 +51,9 @@ class Sensor
         $stmt->bind_param("sii", $sensor_param['type_sensor'],$sensor_param['id_room'],$sensor_param['value_sensor'] );
         $stmt->execute();
         $stmt->close();
+    }
     
-    public function update_value_sensor($newValue){
+    public function setValue($newValue){
 
         $stmt = $this->conn->prepare('UPDATE sensor SET value_sensor = ? WHERE id = ?')     ;
         $stmt->bind_param("i", $newValue);
