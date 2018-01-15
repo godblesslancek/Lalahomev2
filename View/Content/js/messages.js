@@ -26,6 +26,8 @@ $( document ).ready(function() {
 
     // Autocomplete
     $("#search-box").autocomplete({
+        minLength: 2,
+        delay : 400,
         source: function (request, response) {
             $.ajax({
                 url: "index.php", // on donne l'URL du fichier de traitement
