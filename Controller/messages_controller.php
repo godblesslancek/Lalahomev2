@@ -64,6 +64,15 @@ class MessageController{
         }
 
     }
+    public function getUser(){
+        if (helper::checkSession(array('IDuser')) and helper::checkGet(array('search'))){
+            $currentuser = new Users();
+            $currentuser->setCurrentUser($_SESSION["IDuser"]);
+            echo json_encode($currentuser->getUsers($_GET['search']));
+        }
+        else{
+            echo (json_encode('error'));
+        }
 
     public function getUser(){
         if (helper::checkSession(array('IDuser'))){
@@ -75,11 +84,6 @@ class MessageController{
             echo (json_encode("coucouuu"));
         }
 
-    }
-    //Helper for JS
-
-    public function GetSession(){
-        echo json_encode($_SESSION);
     }
 
 

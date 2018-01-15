@@ -19,6 +19,8 @@ class Users
     private $id_flat;
     private $conn;
 
+    private $conn;
+
     /**
      * @return mixed
      */
@@ -122,8 +124,6 @@ class Users
         $this->Phone = $data['phone'];
         $this->id_flat = $data['id_flat'];
         $this->ID = $userid;
-
-
     }
 
     public function getIDBM(){
@@ -137,13 +137,13 @@ class Users
 
     }
 
-    public function getUsers(){
+    public function getUsers($name){
 
         $stmt = $this->conn->prepare('SELECT user.name_user, user.surname_user FROM user
                                           INNER JOIN flat ON user.id_flat = flat.id_flat
                                           INNER JOIN building ON flat.id_building = building.id_building
-                                        WHERE building.id_user = ?');
-        $stmt->bind_param("i", $this->ID);
+                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%")');
+        $stmt->bind_param("is", $this->ID, $name);
         $stmt->execute();
         $res= $stmt->get_result();
         $rows = array();
