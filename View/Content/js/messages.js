@@ -33,17 +33,26 @@ $( document ).ready(function() {
                 url: "index.php", // on donne l'URL du fichier de traitement
                 type: "GET", // la requête est de type POST
                 data: "controller=messages&action=getUser&search=" + request.term, // et on envoie nos données,
-                success: function (data) {
+                success: function(data) {
                     response(JSON.parse(data));
+                    console.log(data);
                 }
             });
         },
-        select: function( event, ui ) {
-            alert("hey");
+        focus: function(event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+            // manually update the textbox
+            $(this).val(ui.item.label);
+        },
+        select: function(event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+            // manually update the textbox and hidden field
+            $(this).val(ui.item.label);
+            alert(ui.item.value);
         }
     });
-
-
 });
 
 
