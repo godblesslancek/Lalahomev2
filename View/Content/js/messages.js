@@ -35,9 +35,11 @@ $( document ).ready(function() {
                 data: "controller=messages&action=getUser&search=" + request.term, // et on envoie nos données,
                 success: function (data) {
                     response(JSON.parse(data));
-                    console.log(data);
                 }
             });
+        },
+        select: function( event, ui ) {
+            alert("hey");
         }
     });
 

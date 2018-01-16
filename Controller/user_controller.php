@@ -47,12 +47,7 @@ class UsersController{
         if ( helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
-                // $error = 'Password does not match';
-
-                // Redirection
-                //$controller = 'pages';
-                //$action = 'register_user';
-                //header('Location: index.php?controller='.$controller.'&action='.$action.'&error=1');
+                header('Location: index.php?controller=pages&action=login');
 
             } else {
 
@@ -71,6 +66,7 @@ class UsersController{
                 return true;
             }
         } else {
+            header('Location: index.php?controller=pages&action=login');
             return false;
         }
 
