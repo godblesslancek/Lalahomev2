@@ -1,30 +1,51 @@
 $( document ).ready(function() {
     getconversation();
+
+    $('#btn_send_message').click(function(e){
+        e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+
+        var message = encodeURIComponent( $('#Message').val() );
+        var IDReceiver = $('#IDuserConv').val();
+
+        if(message != ""){ // on vérifie que les variables ne sont pas vides
+            $.ajax({
+                url : "index.php?controller=messages&action=send", // on donne l'URL du fichier de traitement
+                type : "POST", // la requête est de type POST
+                data : "Message=" + message + "&IDReceiver=" + IDReceiver ,
+                success: function (data) {
+                    date = new Date();
+                    message = escapeHtml($('#Message').val())
+                    addmessage(true,message, date.toUTCString()); // on ajoute le message dans la zone prévue
+                    $('#Message').val('');
+                }
+            });
+        }
+
+    });
+
+
+    // Autocomplete
+    $("#search-box").autocomplete({
+        minLength: 2,
+        delay : 400,
+        source: function (request, response) {
+            $.ajax({
+                url: "index.php", // on donne l'URL du fichier de traitement
+                type: "GET", // la requête est de type POST
+                data: "controller=messages&action=getUser&search=" + request.term, // et on envoie nos données,
+                success: function (data) {
+                    response(JSON.parse(data));
+                }
+            });
+        },
+        select: function( event, ui ) {
+            alert("hey");
+        }
+    });
+
+
 });
 
-
-$('#btn_send_message').click(function(e){
-    e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
-
-    var message = encodeURIComponent( $('#Message').val() );
-    var IDReceiver = $('#IDuserConv').val();
-
-    if(message != ""){ // on vérifie que les variables ne sont pas vides
-        $.ajax({
-            url : "index.php?controller=messages&action=send", // on donne l'URL du fichier de traitement
-            type : "POST", // la requête est de type POST
-            data : "Message=" + message + "&IDReceiver=" + IDReceiver ,
-            success: function (data) {
-                date = new Date();
-                message = escapeHtml($('#Message').val())
-                addmessage(true,message, date.toUTCString()); // on ajoute le message dans la zone prévue
-                $('#Message').val('');
-            }
-        });
-
-
-    }
-});
 
 function getmessage(IDConv) {
     var IDUser = getCookie('IDuser');
@@ -96,6 +117,4 @@ function addconversation(display_name, role, iduser){
         '        </div>');
 
 }
-//Deprecate
-
 

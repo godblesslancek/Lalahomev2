@@ -17,18 +17,14 @@
                 }
 
             ?>
-            <img src="View/Content/images/logoTech.png" alt="Logo" /> 
-            
+            <img src="View/Content/images/logoTech.png" alt="Logo" />
         </div>
 
         <div class="MonEspace" >
-
             <?php
             if(isset($_SESSION['Role']) && !empty($_SESSION['Role']) && $_SESSION['Role']!= "FU"){
                 echo '<a href="index.php?controller=pages&action=messages">';
-            ?>
-             <img class="messages" src="View/Content/images/messages.png" alt="messages" /></a>
-            <?php
+                echo '<img class="messages" src="View/Content/images/messages.png" alt="messages" /></a>';
             }
 
             if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
@@ -40,6 +36,5 @@
 
             ?>
                 <img class="espace" src="View/Content/images/connex.png" alt="espace" /></a>
-            
-         </div>
+        </div>
 </div>

@@ -19,6 +19,10 @@ class PagesController {
         require_once('View/pages/error.php');
     }
 
+    public function users(){
+        require_once 'View/pages/users.php';
+    }
+
     public function home_user(){
         switch ($_SESSION['Role']){
             case 'admin':
@@ -55,13 +59,13 @@ class PagesController {
 
     }
     public function register_user(){
-        //require_once ('views/pages/create_user_form.php');
+        require_once ('View/pages/create_user.php');
     }
 
+    public function userList(){
+        require_once ('View/pages/user_list.php');
+    }
 
-    public function update_user(){}
-
-    public function delete_user(){}
 
     public function faq(){
         require_once ('View/pages/faq.php');
@@ -73,6 +77,14 @@ class PagesController {
         $page_stats = new stats_controller();
         $page_stats->example_page();
     }
+
+    public function update_user(){
+         require_once ('update_user_controller.php');
+        $page_update =new update_user_controller();
+        $page_update->update_page();
+    }
+
+    public function delete_user(){}
 
     public function messages(){
         require_once ('messages_controller.php');

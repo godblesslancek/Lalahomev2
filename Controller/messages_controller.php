@@ -64,10 +64,21 @@ class MessageController{
         }
 
     }
+    public function getUser(){
+        if (helper::checkSession(array('IDuser')) and helper::checkGet(array('search'))){
+            $currentuser = new Users();
+            $currentuser->setCurrentUser($_SESSION["IDuser"]);
+            $rows = array();
 
-    //Helper for JS
-
-    public function GetSession(){
-        echo json_encode($_SESSION);
+            foreach ($currentuser->getUsersList($_GET['search']) as $row){
+                $rows[] = $row['name_user'] . ' ' . $row['surname_user'];
+            }
+            echo json_encode($rows);
+        }
+        else{
+            echo (json_encode('error'));
+        }
     }
+
+
 }
