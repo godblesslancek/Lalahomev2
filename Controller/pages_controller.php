@@ -79,5 +79,17 @@ class PagesController {
         $mess = new MessageController();
         $mess->message_page();
     }
+
+    public function piece(){
+        require_once ('View/pages/piece.php');
+    }
+
+    public function capteurs(){
+        require_once ('View/pages/capteurs.php');
+    }
+
+    public function capteurs_Temperature(){
+        require_once ('View/pages/capteurs_Temperature.php');
+    }
 }
 ?>

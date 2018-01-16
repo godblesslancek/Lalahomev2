@@ -19,10 +19,10 @@
              $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user', 'stats', 'faq', 'messages']);
              break;
          case 'FU':
-             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature']);
              break;
          case 'FM':
-             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq', 'messages']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq', 'messages','piece','capteurs','capteurs_Temperature']);
              break;
          case 'BM':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages']);
