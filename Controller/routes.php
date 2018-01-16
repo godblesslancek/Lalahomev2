@@ -16,13 +16,13 @@
  if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
      switch ($_SESSION['Role']):
          case 'admin':
-             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user', 'stats', 'faq', 'messages']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users']);
              break;
          case 'FU':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq']);
              break;
          case 'FM':
-             $controllers = array('pages' => ['home', 'error', 'login', 'register_user', 'home_user','faq', 'messages']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user','faq', 'messages', 'users']);
              break;
          case 'BM':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages']);

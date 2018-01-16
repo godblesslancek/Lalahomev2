@@ -19,8 +19,6 @@ class Users
     private $id_flat;
     private $conn;
 
-    private $conn;
-
     /**
      * @return mixed
      */
@@ -94,9 +92,13 @@ class Users
 
     public function create_user($user_param){
 
+        $db = Database::getInstance();
+        $conn = $db->getConnection();
+
         $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
         $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
+
         $stmt->execute();
         $stmt->close();
     }
@@ -149,6 +151,35 @@ class Users
         $rows = array();
         while ($row = $res->fetch_assoc()) {
             $rows[] = $row['name_user'] . ' ' . $row['surname_user'];
+        }
+        return $rows;
+    }
+
+    public function getUsersList($name){
+
+        switch ($this->Role) {
+            case 'admin':
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
+                $stmt->bind_param("s", $name);
+                break;
+            case 'FM':
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE user.id_flat = ? AND CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
+                $stmt->bind_param("si", $name, $this->id_flat);
+                break;
+            case 'BM':
+                $stmt = $this->conn->prepare('SELECT * FROM user
+                                          INNER JOIN flat ON user.id_flat = flat.id_flat
+                                          INNER JOIN building ON flat.id_building = building.id_building
+                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%")  LIMIT 20 ');
+                $stmt->bind_param("is", $this->ID, $name);
+                break;
+        }
+        
+        $stmt->execute();
+        $res= $stmt->get_result();
+        $rows = array();
+        while ($row = $res->fetch_assoc()) {
+            $rows[] = $row;
         }
         return $rows;
     }

@@ -5,7 +5,8 @@
 
     <div class="utilisateurs" >
         <h4>Utilisateurs</h4>
-        <center><img src="View/Content/images/utilisateurs.png" alt="utilisateurs" /></center>
+        <center><a href="index.php?controller=pages&action=userList"><img src="View/Content/images/utilisateurs.png" alt="utilisateurs" /></a></center>
+         
     </div>
     <div class="capteur" >
         <h4>Capteurs</h4>
