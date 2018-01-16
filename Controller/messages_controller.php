@@ -68,7 +68,12 @@ class MessageController{
         if (helper::checkSession(array('IDuser')) and helper::checkGet(array('search'))){
             $currentuser = new Users();
             $currentuser->setCurrentUser($_SESSION["IDuser"]);
-            echo json_encode($currentuser->getUsers($_GET['search']));
+            $rows = array();
+
+            foreach ($currentuser->getUsersList($_GET['search']) as $row){
+                $rows[] = $row['name_user'] . ' ' . $row['surname_user'];
+            }
+            echo json_encode($rows);
         }
         else{
             echo (json_encode('error'));

@@ -43,14 +43,11 @@ class UsersController{
     public function register(){
 
         $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
-
+        
         if ( helper::checkPost($post_params)) {
 
             if ($_POST['Password'] != $_POST['Password_Verif']) {
-                $error = 'Password does not match';
-
-                $controller = 'pages';
-                $action = 'register_user';
+                header('Location: index.php?controller=pages&action=login');
 
             } else {
 
@@ -63,16 +60,14 @@ class UsersController{
                     "Phone" => $_POST['Phone'],
                     "Password" => $_POST['Password'],
                     'Role' => $_POST['Role']
-
                 ];
 
-                $user->register_user($user_params);
-
-
-                $controller = 'pages';
-                $action = 'home';
-
+                $user->create_user($user_params);
+                return true;
             }
+        } else {
+            header('Location: index.php?controller=pages&action=login');
+            return false;
         }
 
 
@@ -109,6 +104,17 @@ class UsersController{
             }
         $controller = 'pages';
         $action = 'home';
+        }
+    }
+    public function userList(){
+         if(helper::checkSession(array('IDuser')) && helper::checkGet(array('name'))){
+            $currentUser = new Users();
+            $currentUser->setCurrentUser($_SESSION['IDuser']);
+            if ($_GET['name'] == "undefined")
+                $name  = " ";
+            else
+                $name = $_GET['name'];
+            echo json_encode($currentUser->getUsersList($name));
         }
     }
 

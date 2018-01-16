@@ -1,4 +1,3 @@
-<?php require_once ('Controller/routes_header.php');?>
 <!DOCTYPE html>
     <html>
 
