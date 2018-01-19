@@ -24,22 +24,61 @@ $( document ).ready(function() {
     });
 
 
+
+    $("#dialog").dialog({
+        autoOpen: false
+    });
+
     // Autocomplete
     $("#search-box").autocomplete({
         minLength: 2,
         delay : 400,
+        appendTo: "#dialog",
+        autofocus: true,
         source: function (request, response) {
             $.ajax({
                 url: "index.php", // on donne l'URL du fichier de traitement
                 type: "GET", // la requête est de type POST
                 data: "controller=messages&action=getUser&search=" + request.term, // et on envoie nos données,
-                success: function (data) {
+                success: function(data) {
                     response(JSON.parse(data));
                 }
             });
         },
-        select: function( event, ui ) {
-            alert("hey");
+        focus: function(event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+        },
+        select: function(event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+            $("#IDuserConvModal").val(ui.item.value);
+        }
+    });
+
+    $('#addconv').click(function(){
+        //show modal with seach field
+        //load it with jquery load
+        //
+        $("#dialog").dialog("open");
+    });
+
+    $('#btn_send_message_modal').click(function(e){
+        e.preventDefault();
+        var message = encodeURIComponent( $('#Message_modal').val() );
+        if(message != ""){ // on vérifie que les variables ne sont pas vides
+            $.ajax({
+                url : "index.php?controller=messages&action=send", // on donne l'URL du fichier de traitement
+                type : "POST", // la requête est de type POST
+                data : "Message=" + message + "&IDReceiver=" + $("#IDuserConvModal").val() ,
+                success: function (data) {
+                    $('#Message').val('');
+                    $("#IDuserConvModal").val('');
+                    $("#dialog").dialog('close');
+                    $("#IDuserConvModal").val('');
+                    getconversation();
+                }
+            });
         }
     });
 
@@ -69,6 +108,8 @@ function getmessage(IDConv) {
 }
 
 function getconversation(){
+    $("#conv").empty();
+    $('#messages').empty();
     $.ajax({
         url : "index.php", // on donne l'URL du fichier de traitement
         type : "GET", // la requête est de type POST
@@ -111,10 +152,9 @@ function addmessage(sender, message, time){
 
 function addconversation(display_name, role, iduser){
 
-    $('#panel-left').append('<div class="conversation" iduser="' + iduser+'">\n' +
+    $('#conv').append('<div class="conversation" iduser="' + iduser+'">\n' +
         '            <img src="View/Content/images/user_avatar.jpeg" alt="Avatar">\n' +
         '            <p>' + display_name + '</p>\n' +
         '        </div>');
 
 }
-
