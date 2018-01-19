@@ -34,14 +34,14 @@ class Effector
 
     public function create_effector($effector_param){
 
-        $stmt = $this->conn->prepare('INSERT INTO effector (type_effector,id_room,value_effector) VALUES (?,?,?)');
-        $stmt->bind_param("sii", $effector_param['type_effector'],$effector_param['id_room'],$effector_param['value_effector'] );
+        $stmt = $this->conn->prepare('INSERT INTO effector (type_effector,id_room/*,value_effector*/) VALUES (?,?/*,?*/)');
+        $stmt->bind_param("si", $effector_param['type_effector'],$effector_param['id_room']/*,$effector_param['value_effector']*/ );
         $stmt->execute();
-        $stmt->close();
         $this->ID = $this->conn->insert_id;
         $this->type_effector = $effector_param['type_effector'];
         $this->id_room = $effector_param['id_room'];
-        $this->value_effector = $effector_param['value_effector'];
+
+//        $this->value_effector = $effector_param['value_effector'];
         
     }
     
