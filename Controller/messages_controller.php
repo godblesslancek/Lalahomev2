@@ -8,9 +8,6 @@
 
 class MessageController{
 
-    public function __construct()
-    {
-    }
 
     public function message_page(){
         require_once ('View/pages/messages.php');
@@ -71,7 +68,8 @@ class MessageController{
             $rows = array();
 
             foreach ($currentuser->getUsersList($_GET['search']) as $row){
-                $rows[] = $row['name_user'] . ' ' . $row['surname_user'];
+                //$rows[] = [$row['id_user'],$row['name_user'] . ' ' . $row['surname_user']];
+                $rows[] = ["label" => $row['name_user'] . ' ' . $row['surname_user'], "value" => $row['id_user']];
             }
             echo json_encode($rows);
         }

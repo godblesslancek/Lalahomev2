@@ -4,7 +4,7 @@
 <div id="bienvenue">
     <div class="capteur" >
         <h4>Capteurs</h4>
-        <center><img src="View/Content/images/capteur.png" alt="offre" /></center>
+        <center><a href="index.php?controller=pages&action=capteurs"><img src="View/Content/images/capteur.png" alt="offre" /></a></center>
        
     </div>
     <div class="piece" >
