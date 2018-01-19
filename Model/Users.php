@@ -95,19 +95,19 @@ class Users
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
-        $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
+        $password = password_hash($user_param['Password'], PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
-        $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
+        $stmt->bind_param("ssssss", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $password ,$user_param['Role']);
 
         $stmt->execute();
         $stmt->close();
     }
     
-    public function update_user($user_param){
+    public function update_user(){
 
-        $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
+        $password = password_hash(['password'], PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare('UPDATE user SET surname_user = ?, name_user = ?, email = ?, phone = ? WHERE id = ?')     ;
-        $stmt->bind_param("sssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone']);
+        $stmt->bind_param("sssi", ['LastName'],['FirstName'] , ['Email'], ['Phone']);
         $stmt->execute();
         $stmt->close();
 

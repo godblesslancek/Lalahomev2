@@ -1,7 +1,12 @@
 // Wait for the DOM to be ready
 $(document).ready(function(){
-    validateForm();
     getListUsers();
+    $('#btn_ajouter').click(function () {
+      //chargé le form dans content
+      $("#content").load("View/pages/create_user.php", function(){
+          validateForm();
+      });
+  });
 });
 
 
@@ -12,7 +17,6 @@ function getListUsers(name) {
     data: "controller=user&action=userList&name=" + name, // et on envoie nos données,
     datatype: "json",
     success: function (data) {
-      console.log(data);
       createTable(data);
     }
   });
@@ -72,8 +76,6 @@ function createTable(data) {
     "email": "@mail",
     "phone": "Phone",
     "id_flat": "Id_flat",
-
-
   };
   createRow(header);
   $.each(row, function (index) {
@@ -91,3 +93,5 @@ function createRow(data) {
   row.append($("<td>" + data.id_flat+ "</td>"));
   
 }
+
+

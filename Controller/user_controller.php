@@ -53,7 +53,7 @@ class UsersController{
 
                 $user = new Users();
 
-                $user_params = [
+                $user_param = [
                     "LastName" => $_POST['LastName'],
                     "FirstName" => $_POST['FirstName'],
                     "Email" => $_POST['Email'],
@@ -62,7 +62,8 @@ class UsersController{
                     'Role' => $_POST['Role']
                 ];
 
-                $user->create_user($user_params);
+                $user->create_user($user_param);
+                header('Location: index.php?controller=pages&action=userList');
                 return true;
             }
         } else {
