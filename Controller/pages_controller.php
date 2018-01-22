@@ -36,7 +36,9 @@ class PagesController {
                 break;
             case 'FU':
                 require_once ('View/pages/home_flat_user.php');
-                ;
+                break;
+            case 'tester':
+                require_once ('View/pages/test.php');
         }
 
     }
@@ -69,6 +71,11 @@ class PagesController {
 
     public function faq(){
         require_once ('View/pages/faq.php');
+    }
+
+    public function test(){
+        require_once ('View/pages/test.php');
+
     }
 
 

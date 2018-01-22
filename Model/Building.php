@@ -55,11 +55,35 @@ class Building
         $stmt->bind_param("sisi", $building_param['name_building'],$building_param['nb_of_flats'] , $building_param['address'], $building_param['id_user']);
         $stmt->execute();
         $stmt->close();
-
-
-
     }
 
+
+    public function getBuilding($name_building){
+        $role = $_SESSION['Role'];
+        $idUser = $_SESSION['IDuser'];
+        if ($role == "admin"){
+            $stmt = $this->conn->prepare('SELECT * from building WHERE building.name_building LIKE CONCAT("%",?,"%")');
+            $stmt->bind_param('s',$name_building);
+        }
+        elseif ($role == "BM"){
+            $stmt = $this->conn->prepare('SELECT * from building WHERE id_user=?');
+            $stmt->bind_param('i', $idUser);
+        }
+
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        $rows = array();
+        while ($row = $res->fetch_assoc()) {
+            $rows[] = [$row["id_user"],$row["name_building"]];
+        }
+
+        
+        $stmt->close();
+        return $rows;
+
+       
+    }
 
 }
 

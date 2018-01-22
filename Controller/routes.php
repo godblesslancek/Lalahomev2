@@ -26,6 +26,9 @@
              break;
          case 'BM':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages']);
+             break;
+         case 'tester':
+             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','test']);
      endswitch;
  }
 
