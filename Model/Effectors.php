@@ -59,10 +59,17 @@ class Effector
         $stmt->bind_param("i", $newValue);
         $stmt->execute();
         $stmt->close();
+    }
+
+    public function getValue($param){  //array avec idRoom et typeEffector
+
+        $stmt = $this->conn->prepare('SELECT * FROM effector WHERE id_room = ? AND type_effector = ?')     ;
+        $stmt->bind_param("is", $param['idRoom'], $param['typeEffector']);
+        $stmt->execute();
+        $stmt->close();
     
 
     }
-
 
 }
 

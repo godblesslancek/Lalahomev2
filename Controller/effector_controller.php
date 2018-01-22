@@ -1,7 +1,22 @@
 <?php
+/* récupérer état capteurs (param=idpiece,typecapteur, return etat)
+
+changer etat capteur (param= idcapteur)
+
+*/
+
+require_once("Model/Effectors.php");
 
 class EffectorController{
 
+    public function getEffectorState() {
+        $effectorParams = [
+            "idRoom" => $_POST['idRoom'],
+            "typeEffector" => $_POST['typeEffector']
+        ];
+
+
+    }
 
 
 
@@ -13,7 +28,7 @@ class EffectorController{
 
 
 
-
+}
 
 
 

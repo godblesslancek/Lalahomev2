@@ -17,6 +17,15 @@ class stats_controller{
         require_once('View/pages/stats_example.php');
     }
 
+    public function renderpage(){
+        if(helper::checkSession(array('Role'))){
+            switch ($_SESSION["Role"]){
+                case 'admin':
+                    require_once('View/pages/statistiques_admin.php');
+            }
+        }
+    }
+
 }
 
 
