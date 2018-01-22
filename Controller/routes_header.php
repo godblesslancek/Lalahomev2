@@ -32,12 +32,13 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);     
     endswitch;
 }
-
+$used = false;
 // On regarde si le controller demandé et son action sont autorisés
 // Si quelqu'un essaie d'accéder quelque chose de non autorisé, une page d'erreur sera affiché.
 if (array_key_exists($controller, $controller_rh)) {
     if (in_array($action, $controller_rh[$controller])) {
         call($controller, $action);
+        $used = True;
     }
 }
 
@@ -58,9 +59,9 @@ if ($controller== 'pages'){
         case 'Stats':
             $page_title = 'Statistiques Globales';
             break;
-        case 'test':
-            $page_title = 'Page de test';
-            break;
+        case 'register_user':
+            $page_title = 'Creation Utilisateur';
+        break;
     endswitch;
 }
 
