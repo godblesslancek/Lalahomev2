@@ -19,6 +19,14 @@ class stats_controller{
 
     }
 
+    public function getBuildingList(){
+        if(helper::checkSession(array('IDuser')) && helper::checkGet(array('search'))){
+            $buiding = new Building();
+
+            echo json_encode($buiding->getBuilding($_GET["search"]));
+        }
+    }
+
 }
 
 

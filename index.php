@@ -47,6 +47,9 @@ function call($controller, $action) {
             require_once ('Model/Message.php');
             require_once ('Model/Users.php');
             $_controller = new MessageController();
+        case 'stats':
+            require_once ("Model/Building.php");
+            $_controller = new stats_controller();
 
     }
 

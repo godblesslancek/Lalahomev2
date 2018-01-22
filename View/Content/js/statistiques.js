@@ -1,41 +1,10 @@
 $( document ).ready(function() {
-    createDayTempChart();
-    createWeekTempChart();
-    createWeekConsoChart();
-    createDayConsoChart();
 
-    $("#search-box").autocomplete({
-        minLength: 2,
-        delay : 400,
-        appendTo: "#dialog",
-        autofocus: true,
-        source: function (request, response) {
-            $.ajax({
-                url: "index.php", // on donne l'URL du fichier de traitement
-                type: "GET", // la requête est de type POST
-                data: "controller=building&action=getBuilding&search=" + request.term, // et on envoie nos données,
-                success: function(data) {
-                    response(JSON.parse(data));
-                }
-            });
-        },
-        focus: function(event, ui) {
-            event.preventDefault();
-            $(this).val(ui.item.label);
-        },
-        select: function(event, ui) {
-            event.preventDefault();
-            $(this).val(ui.item.label);
-            $("#IDuserConvModal").val(ui.item.value);
-        }
-    });
-
-    fillDropDownList(["1", "2", "3", "4", "5"],'#selectBuilding');
 
     $('#selectBuilding').change(function() {
         var selectedValue = parseInt(jQuery(this).val());
 
-        
+        //call ajax
     });
 });
 
@@ -342,14 +311,24 @@ function createDayConsoChart(data){
     });
 }
 
-function getBuilding(){
- //call ajax//
+function getBuilding(search){
+    if (search = 'undefine'){
+        search = "";
+    }
+    $.ajax({
+        url: "index.php", // on donne l'URL du fichier de traitement
+        type: "GET", // la requête est de type POST
+        data: "controller=stats&action=getBuildingList&search=" + search, // et on envoie nos données,
+        success: function(data) {
+            fillDropDownList(JSON.parse(data),'#selectBuilding');
+        }
+    });
 }
 
 function fillDropDownList(options,selector){
     $(selector).empty();
     $.each(options, function(i, p) {
-        $(selector).append($('<option></option>').val(p).html(p));
+        $(selector).append($('<option></option>').val(p[0]).html(p[1]));
     });
 }
 function createTable(data) {
