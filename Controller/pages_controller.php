@@ -75,7 +75,7 @@ class PagesController {
     public function stats(){
         require_once ('stats_controller.php');
         $page_stats = new stats_controller();
-        $page_stats->example_page();
+        $page_stats->renderpage();
     }
 
     public function update_user(){
