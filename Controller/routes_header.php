@@ -16,17 +16,20 @@ $controller_rh = array('user' => ['connect'], 'messages' => ['send']);
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
-                'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],
+                'messages' => ['send']);
             break;
         case 'FU':
             $controller_rh = array('user' => ['connect', 'disconnect']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],  'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send','retreivemessage', 'GetSession']);
             break;
         case 'BM':
-            $controller_rh = array('user' => ['connect', 'disconnect','userList'], 'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);
+            break;
+        case 'tester':
+            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);     
     endswitch;
 }
 $used = false;
@@ -58,7 +61,7 @@ if ($controller== 'pages'){
             break;
         case 'register_user':
             $page_title = 'Creation Utilisateur';
-            break;
+        break;
     endswitch;
 }
 

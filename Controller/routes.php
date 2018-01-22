@@ -26,7 +26,6 @@
              break;
          case 'BM':
              $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats']);
-     endswitch;
  }
 
   // On regarde si le controller demandé et son action sont autorisés
