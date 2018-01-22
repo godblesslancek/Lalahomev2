@@ -25,7 +25,7 @@
              $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user','faq', 'messages', 'users','piece','capteurs','capteurs_Temperature']);
              break;
          case 'BM':
-             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages']);
+             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats']);
      endswitch;
  }
 

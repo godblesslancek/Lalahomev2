@@ -15,12 +15,8 @@ class stats_controller{
 
 
     public function renderpage(){
-        if(helper::checkSession(array('Role'))){
-            switch ($_SESSION["Role"]){
-                case 'admin':
-                    require_once('View/pages/statistiques_admin.php');
-            }
-        }
+        require_once('View/pages/statistiques.php');
+
     }
 
 }
