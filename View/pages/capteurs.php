@@ -1,3 +1,5 @@
+
+<script src="View/Content/js/effectors.js"></script>
 <h1>Gérer ma maison par capteurs ! </h1>
 
 
