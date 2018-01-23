@@ -16,25 +16,35 @@ $controller_rh = array('user' => ['connect'], 'messages' => ['send']);
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],
-                'messages' => ['send']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
             break;
         case 'FU':
-            $controller_rh = array('user' => ['connect', 'disconnect']);
+            $controller_rh = array('user' => ['connect', 'disconnect'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send','retreivemessage', 'GetSession']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState', 'changeState']);
             break;
         case 'BM':
-            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);
+            $controller_rh = array('user' => ['connect', 'disconnect','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
     endswitch;
 }
-
+$used = false;
 // On regarde si le controller demandé et son action sont autorisés
 // Si quelqu'un essaie d'accéder quelque chose de non autorisé, une page d'erreur sera affiché.
 if (array_key_exists($controller, $controller_rh)) {
     if (in_array($action, $controller_rh[$controller])) {
         call($controller, $action);
+        $used = True;
     }
 }
 
@@ -55,6 +65,9 @@ if ($controller== 'pages'){
         case 'Stats':
             $page_title = 'Statistiques Globales';
             break;
+        case 'register_user':
+            $page_title = 'Creation Utilisateur';
+        break;
     endswitch;
 }
 

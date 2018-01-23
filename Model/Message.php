@@ -48,8 +48,6 @@ class Message
         return $rows;
 
     }
-
-
 }
 
 class Conversation
@@ -75,6 +73,11 @@ class Conversation
             if (!in_array($row['id_sender'],$rows))
                 if($row['id_sender'] != $this->ID_receiver)
                     $rows[] = $row['id_sender'];
+            if (!in_array($row['id_receiver'],$rows))
+                if($row['id_sender'] == $this->ID_receiver)
+                    $rows[] = $row['id_receiver'];
+
+
         }
         return $rows;
     }

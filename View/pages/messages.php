@@ -9,6 +9,9 @@
 
 <div id="panel-left" class="left">
 
+    <button id="addconv"class="round-button">+</button>
+    <div id="conv">
+    </div>
 </div>
 
 <div id="main">
@@ -22,8 +25,16 @@
     </form>
 </div>
 
+<div id="dialog" title="Nouveau Message">
+
+    <div id="searchfielddiv" class="ui-widget">
+        <input type="text" id="search-box" placeholder="Utilisateur...">
+    </div>
+
+</div>
 <div id="hiddenfield">
     <input type="hidden" id="IDuserConv" value="">
+    <input type="hidden" id="IDuserConvModal" value="">
 </div>
 
 <script src="View/Content/js/messages.js"></script>

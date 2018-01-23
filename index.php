@@ -47,6 +47,23 @@ function call($controller, $action) {
             require_once ('Model/Message.php');
             require_once ('Model/Users.php');
             $_controller = new MessageController();
+            break;
+        case 'stats':
+            require_once ("Model/Building.php");
+            $_controller = new stats_controller();
+            break;
+        case 'flat':
+            require_once ("Model/Users.php");
+            require_once ("Model/Room.php");
+            require_once ("Model/Flat.php");
+            $_controller = new FlatController();
+            break;
+        case 'effector':
+            require_once ("Model/Effectors.php");
+            $_controller = new EffectorController();
+
+
+
     }
 
     // Appel de l'action
@@ -65,12 +82,8 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action     = 'home';
 }
 
-if($controller == "messages"){
-    call($controller,$action);
-}
-else
-// Chargement du layout
-    require_once('View/layout.php');
-
+require_once ('Controller/routes_header.php');
+if(!$used)
+    require_once ('View/layout.php');
 ?>
 

@@ -13,7 +13,7 @@ class Database {
     private $_connection;
     private $_host = "localhost";
     private $_username = "root";
-    private $_password = "";
+    private $_password = "root";
     private $_database = "techouse";
 
 
