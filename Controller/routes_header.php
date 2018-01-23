@@ -18,9 +18,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
         case 'admin':
             $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
-                'stats' => ['getBuildingList'],
-                'flat' => ['getListRooms'],
-                'effector' => ['getEffectorList','getEffectorState', 'changeState']);
+                'stats' => ['getBuildingList']);
             break;
         case 'FU':
             $controller_rh = array('user' => ['connect', 'disconnect'],
