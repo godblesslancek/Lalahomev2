@@ -8,6 +8,11 @@ class Effector
     private $value_effector;
     private $conn;
 
+    public function __construct()
+    {
+        $db = Database::getInstance();
+        $this->conn = $db->getConnection();
+    }
 
     public function getValueEffector()
     {
@@ -29,22 +34,17 @@ class Effector
         return $this->id_room;
     }
 
-    public function __construct()
-    {
-        $db = Database::getInstance();
-        $this->conn = $db->getConnection();
-    }
-
     public function set_effector($id_effector){
         $stmt = $this->conn->prepare('SELECT * FROM effector WHERE id_effector = ?');
         $stmt->bind_param('i', $id_effector);
         $stmt->execute();
         $data = $stmt->get_result()->fetch_assoc();
-        $this->ID = $this->conn->insert_id;
+        $this->ID = $data['id_effector'];
         $this->type_effector = $data['type_effector'];
         $this->id_room = $data['id_room'];
         $this->value_effector = $data['value'];
     }
+
     public function create_effector($effector_param){
 
         $stmt = $this->conn->prepare('INSERT INTO effector (type_effector,id_room,value_effector) VALUES (?,?,?)');
