@@ -123,6 +123,13 @@ class Users
 
     }
 
+    public function delete_user($userid){
+        $stmt = $this->conn->prepare('DELETE FROM user WHERE user.id_user = ?');
+        $stmt->bind_param('i', $userid);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     public function setCurrentUser($userid){
 
         $stmt = $this->conn->prepare('SELECT * from user WHERE id_user = ?');

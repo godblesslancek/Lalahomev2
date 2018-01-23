@@ -7,6 +7,13 @@ $(document).ready(function(){
           validateForm();
       });
   });
+    $('#btn_modifier').click(function (event){
+      console.log($("#userselected").val()); //Affiche maDiv
+    })
+    $('#btn_supprimer').click(function (event) {
+      delete_user($("#userselected").val());
+    })
+  
 });
 
 
@@ -67,6 +74,7 @@ function validateForm() {
 }
 
 function createTable(data) {
+  $('#content').empty();
   $('#content').append('<table id="fieldsetTabUser"></table>');
   var row = JSON.parse(data);
   var header = {
@@ -80,10 +88,14 @@ function createTable(data) {
   createRow(header);
   $.each(row, function (index) {
     createRow(row[index]);
-  })
+  });
+  $('#fieldsetTabUser tr').click(function () {
+   var id =  $(this).attr('id');
+   $('#userselected').val(id);
+  });
 }
 function createRow(data) {
-  var row = $("<tr />")
+  var row = $('<tr id="' + data.id_user + '" />')
   $('#fieldsetTabUser').append(row);
   row.append($("<td>" + data.name_user + "</td>"));
   row.append($("<td>" + data.surname_user+ "</td>"));
@@ -94,4 +106,15 @@ function createRow(data) {
   
 }
 
+function delete_user(id) {
+  $.ajax({
+    url: "index.php", // on donne l'URL du fichier de traitement
+    type: "GET", // la requête est de type POST
+    data: "controller=user&action=delete&id_user=" + id, // et on envoie nos données,
+    datatype: "json",
+    success: function(data) {
+       getListUsers();
+    }
 
+  });
+}

@@ -91,7 +91,6 @@ class PagesController {
         $page_update->update_page();
     }
 
-    public function delete_user(){}
 
     public function messages(){
         require_once ('messages_controller.php');

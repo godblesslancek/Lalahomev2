@@ -8,3 +8,4 @@
     </center>
     <br/>
         <div class="gauche" id="content"></div>
+<input type=hidden id="userselected" value="">

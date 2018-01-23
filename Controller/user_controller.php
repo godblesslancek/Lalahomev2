@@ -107,6 +107,9 @@ class UsersController{
         $action = 'home';
         }
     }
+
+   
+
     public function userList(){
          if(helper::checkSession(array('IDuser')) && helper::checkGet(array('name'))){
             $currentUser = new Users();
@@ -117,6 +120,17 @@ class UsersController{
                 $name = $_GET['name'];
             echo json_encode($currentUser->getUsersList($name));
         }
+    }
+
+    public function delete(){
+        if(helper::checkSession(array('IDuser')) && helper::checkGet(array('id_user'))){
+            $user = new Users();
+            $user->delete_user($_GET['id_user']);
+
+            echo json_encode("done");
+        }
+        else
+            echo json_encode('failded');
     }
 
 
