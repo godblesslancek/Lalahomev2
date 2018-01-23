@@ -8,7 +8,7 @@ $(document).ready(function(){
       });
   });
     $('#btn_modifier').click(function (event){
-      console.log($("#userselected").val()); //Affiche maDiv
+      $("#userselected").val();
     })
     $('#btn_supprimer').click(function (event) {
       delete_user($("#userselected").val());
@@ -75,7 +75,7 @@ function validateForm() {
 
 function createTable(data) {
   $('#content').empty();
-  $('#content').append('<table id="fieldsetTabUser"></table>');
+  $('#content').append('<center><table id="fieldsetTabUser"></table></center>');
   var row = JSON.parse(data);
   var header = {
     "name_user": "Nom",
