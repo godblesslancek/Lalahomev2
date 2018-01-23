@@ -6,7 +6,7 @@
  * Time: 09:47
  */
 
-class Flat {
+class FlatController {
 
     public function getListRooms(){
         if(helper::checkSession(array('IDuser'))){
@@ -20,3 +20,5 @@ class Flat {
     }
 }
 
+
+?>
