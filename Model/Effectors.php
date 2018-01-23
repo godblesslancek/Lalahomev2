@@ -100,7 +100,7 @@ class Effector
         return $rows;
 
     }
-    
+
 }
 
 ?>
