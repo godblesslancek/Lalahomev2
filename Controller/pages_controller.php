@@ -36,7 +36,9 @@ class PagesController {
                 break;
             case 'FU':
                 require_once ('View/pages/home_flat_user.php');
-                ;
+                break;
+            case 'tester':
+                require_once ('View/pages/test.php');
         }
 
     }
@@ -71,11 +73,16 @@ class PagesController {
         require_once ('View/pages/faq.php');
     }
 
+    public function test(){
+        require_once ('View/pages/test.php');
+
+    }
+
 
     public function stats(){
         require_once ('stats_controller.php');
         $page_stats = new stats_controller();
-        $page_stats->example_page();
+        $page_stats->renderpage();
     }
 
     public function update_user(){

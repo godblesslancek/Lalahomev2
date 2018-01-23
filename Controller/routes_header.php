@@ -17,16 +17,25 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
             $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
-                'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
             break;
         case 'FU':
-            $controller_rh = array('user' => ['connect', 'disconnect']);
+            $controller_rh = array('user' => ['connect', 'disconnect'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],  'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState', 'changeState']);
             break;
         case 'BM':
-            $controller_rh = array('user' => ['connect', 'disconnect','userList'], 'messages' => ['send','retreivemessage','retreiveconversation','getUser']);
+            $controller_rh = array('user' => ['connect', 'disconnect','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
     endswitch;
 }
 $used = false;
@@ -58,7 +67,7 @@ if ($controller== 'pages'){
             break;
         case 'register_user':
             $page_title = 'Creation Utilisateur';
-            break;
+        break;
     endswitch;
 }
 
