@@ -113,11 +113,10 @@ class Users
         $stmt->close();
     }
     
-    public function update_user(){
+    public function update_user($user_param){
 
-        $password = password_hash(['password'], PASSWORD_DEFAULT);
-        $stmt = $this->conn->prepare('UPDATE user SET surname_user = ?, name_user = ?, email = ?, phone = ? WHERE id = ?')     ;
-        $stmt->bind_param("sssi", ['LastName'],['FirstName'] , ['Email'], ['Phone']);
+        $stmt = $this->conn->prepare('UPDATE user SET  name_user = ?, surname_user = ?, email = ?, phone = ?, role_user = ? WHERE id_user = ?')     ;
+        $stmt->bind_param("sssssi", $user_param['FirstName'] ,$user_param['LastName'], $user_param['Email'], $user_param['Phone'], $user_param["Role"], $user_param['ID']);
         $stmt->execute();
         $stmt->close();
 
@@ -184,6 +183,17 @@ class Users
             $rows[] = $row;
         }
         return $rows;
+    }
+
+    public function getUser(){
+
+        $user = [["name" => 'ID', 'value' => $this->getID()],
+            ["name" => 'FirstName', 'value' => $this->getFirstName()],
+            ["name" => 'LastName', 'value' => $this->getLastName()],
+            ["name" => 'Role', 'value' =>  $this->getRole()],
+            ["name" => 'Email', 'value' =>  $this->Email],
+            ["name" => 'Phone', 'value' =>  $this->Phone]];
+        return $user;
     }
 
 }

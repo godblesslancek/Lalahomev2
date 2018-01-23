@@ -16,7 +16,7 @@ $controller_rh = array('user' => ['connect'], 'messages' => ['send']);
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete'],
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
                 'stats' => ['getBuildingList']);
             break;
@@ -26,7 +26,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
                 'effector' => ['getEffectorList','getEffectorState']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete'],
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
                 'stats' => ['getBuildingList'],
                 'flat' => ['getListRooms'],

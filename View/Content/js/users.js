@@ -8,7 +8,11 @@ $(document).ready(function(){
       });
   });
     $('#btn_modifier').click(function (event){
-      $("#userselected").val();
+        $("#content").load("View/pages/update_user.php", function(){
+
+           getuser($("#userselected").val());
+        });
+
     })
     $('#btn_supprimer').click(function (event) {
       delete_user($("#userselected").val());
@@ -117,4 +121,20 @@ function delete_user(id) {
     }
 
   });
+}
+
+function getuser(iduser){
+    $.ajax({
+        url: "index.php", // on donne l'URL du fichier de traitement
+        type: "GET", // la requête est de type POST
+        data: "controller=user&action=getUser&id_user=" + iduser, // et on envoie nos données,
+        datatype: "json",
+        success: function(data) {
+            dataP = JSON.parse(data);
+            $.each(dataP, function (index,item) {
+                $("#"+ item.name).val(item.value);
+            });
+        }
+
+    });
 }

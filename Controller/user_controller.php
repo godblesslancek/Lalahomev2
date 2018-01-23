@@ -76,35 +76,23 @@ class UsersController{
 
     public function update(){
 
-        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Password', 'Password_Verif', 'Role');
+        $post_params = array('LastName', 'FirstName', 'Email', 'Phone', 'Role');
 
         if (helper::checkPost($post_params)) {
+             $user = new Users();
 
-            if ($_POST['Password'] != $_POST['Password_Verif']) {
-                $error = 'Password does not match';
+            $user_params = [
+                "LastName" => $_POST['LastName'],
+                "FirstName" => $_POST['FirstName'],
+                "Email" => $_POST['Email'],
+                "Phone" => $_POST['Phone'],
+                "Role" => $_POST["Role"],
+                'ID' => $_POST['ID']
+            ];
 
-                $controller = 'pages';
-                $action = 'update_user';
+            $user->update_user($user_params);
+            header('Location: index.php?controller=pages&action=userList');
 
-            } else {
-
-
-                $user = new Users();
-
-                $user_params = [
-                    "LastName" => $_POST['LastName'],
-                    "FirstName" => $_POST['FirstName'],
-                    "Email" => $_POST['Email'],
-                    "Phone" => $_POST['Phone'],
-                    'ID' => $_POST['ID']
-
-                ];
-
-                $user->update_user($user_params);
-
-            }
-        $controller = 'pages';
-        $action = 'home';
         }
     }
 
@@ -133,5 +121,12 @@ class UsersController{
             echo json_encode('failded');
     }
 
+    public function getUser(){
+        if(helper::checkGet(array('id_user'))){
+            $user = new Users();
+            $user->setCurrentUser($_GET['id_user']);
+            echo json_encode($user->getUser());
+        }
+    }
 
 }
