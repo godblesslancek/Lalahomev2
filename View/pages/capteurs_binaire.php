@@ -2,6 +2,7 @@
 
 <script src="View/Content/js/Capteurs_binaire.js"></script>
 
+<script src="View/Content/js/effectors.js"></script>
 
 <div id="content" >
 
