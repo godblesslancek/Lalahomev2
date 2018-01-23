@@ -82,7 +82,7 @@ class Effector
         $stmt->close();
     }
 
-    public function getEffectorsList($id_room){  //array avec idRoom et typeEffector
+    public function getEffectorsList($id_room){
 
         $stmt = $this->conn->prepare('SELECT * FROM effector WHERE id_room = ? ')     ;
         $stmt->bind_param("i", $id_room);
