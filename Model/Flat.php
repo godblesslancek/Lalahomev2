@@ -7,9 +7,14 @@ class Flat
     private $nb_appart;
     private $id_building;
     private $conn;
-    
 
-    
+
+    public function __construct()
+    {
+        $db = Database::getInstance();
+        $conn = $db->getConnection();
+    }
+
     public function getID()
     {
         return $this->ID;
@@ -30,16 +35,7 @@ class Flat
         return $this->building;
     }
 
-    public function __construct()
-    {
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-    }
-
-
     public function create_flat($flat_param){
-
-
         $stmt = $this->conn->prepare('INSERT INTO flat (nb_of_rooms,nb_appart,id_building) VALUES (?,?,?)');
         $stmt->bind_param("iii", $flat_param['nb_of_rooms'],$flat_param['nb_appart'],$flat_param['id_building']);
         $stmt->execute();
@@ -52,9 +48,17 @@ class Flat
         $stmt->bind_param("iii", $flat_param['nb_of_rooms'],$flat_param['nb_appart'] , $flat_param['id_building']);
         $stmt->execute();
         $stmt->close();
+    }
 
-
-
+    public function set_flat($id_flat){
+        $stmt = $this->conn->prepare('SELECT * FROM flat WHERE id_flat = ?');
+        $stmt->bind_param('i', $id_flat);
+        $stmt->execute();
+        $data = $stmt->get_result()->fetch_assoc();
+        $this->ID = $data['id_flat'];
+        $this->nb_of_rooms = $data['nb_of_rooms'];
+        $this->nb_appart = $data['nb_appart'];
+        $this->id_building = $data['id_building'];
     }
 
 

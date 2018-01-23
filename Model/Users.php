@@ -51,6 +51,16 @@ class Users
         return $this->Role;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdFlat()
+    {
+        return $this->id_flat;
+    }
+
+
+
     public function __construct()
     {
         $db = Database::getInstance();
