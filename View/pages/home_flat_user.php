@@ -9,7 +9,7 @@
     </div>
     <div class="piece" >
         <h4>Pièces</h4>
-        <center><img src="View/Content/images/piece.png" alt="piece" /></center>
+        <center><a href="index.php?controller=pages&action=piece"><img src="View/Content/images/piece.png" alt="piece" /></a></center>
         
     </div>
 
