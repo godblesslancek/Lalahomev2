@@ -47,9 +47,22 @@ function call($controller, $action) {
             require_once ('Model/Message.php');
             require_once ('Model/Users.php');
             $_controller = new MessageController();
+            break;
         case 'stats':
             require_once ("Model/Building.php");
             $_controller = new stats_controller();
+            break;
+        case 'flat':
+            require_once ("Model/Users.php");
+            require_once ("Model/Room.php");
+            require_once ("Model/Flat.php");
+            $_controller = new FlatController();
+            break;
+        case 'effector':
+            require_once ("Model/Effectors.php");
+            $_controller = new EffectorController();
+
+
 
     }
 
