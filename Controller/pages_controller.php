@@ -110,5 +110,9 @@ class PagesController {
     public function capteurs_Temperature(){
         require_once ('View/pages/capteurs_Temperature.php');
     }
+
+    public function capteurs_binaire(){
+        require_once ('View/pages/capteurs_binaire.php');
+    }
 }
 ?>

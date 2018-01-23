@@ -21,17 +21,16 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users']);
             break;
         case 'FU':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature','capteurs_binaire']);
             break;
         case 'FM':
-            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user','faq', 'messages', 'users','piece','capteurs','capteurs_Temperature']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user','faq', 'messages', 'users','piece','capteurs','capteurs_Temperature','capteurs_binaire']);
             break;
         case 'BM':
             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats']);
             break;
     }
 }
-
   // On regarde si le controller demandé et son action sont autorisés
   // Si quelqu'un essaie d'accéder quelque chose de non autorisé, une page d'erreur sera affiché.
   if (array_key_exists($controller, $controllers)) {
