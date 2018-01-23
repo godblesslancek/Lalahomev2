@@ -75,8 +75,11 @@ class Effector
 
     public function changeValue(){
 
-        $newValue = !boolval($this->value_effector);
-        $stmt = $this->conn->prepare('UPDATE effector SET value_effector = ? WHERE id = ?')     ;
+        if($this->value_effector == 0)
+            $newValue = 1;
+        if ($this->value_effector == 1)
+            $newValue = 0;
+        $stmt = $this->conn->prepare('UPDATE effector SET value = ? WHERE id_effector = ?')     ;
         $stmt->bind_param("ii", $newValue, $this->ID);
         $stmt->execute();
         $stmt->close();
@@ -94,7 +97,7 @@ class Effector
         $rows = array();
 
         while($row = $res->fetch_assoc()){
-            $rows[] = array("type" => $row["type_effecor"], "id" => $row["id_effector"]);
+            $rows[] = array("type" => $row["type_effector"], "id" => $row["id_effector"]);
         }
 
         return $rows;

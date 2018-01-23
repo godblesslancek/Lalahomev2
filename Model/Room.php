@@ -18,7 +18,7 @@ class Room
     public function __construct()
     {
         $db = Database::getInstance();
-        $conn = $db->getConnection();
+        $this->conn = $db->getConnection();
     }
 
 
