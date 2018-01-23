@@ -1,30 +1,16 @@
 
 
-<script src="View/Content/js/Capteurs_Temperature.js"></script>
-<h1>Température </h1>
-</br>
+<script src="View/Content/js/Capteurs_binaire.js"></script>
 
-<div class="Temperatures" >
-    <div class="moins"  id="btn_moins">
-        <center><img src="View/Content/images/capteurs/moins.png" alt="moins" /></center>   
-    </div>
 
-    <div class="valeurTemp" >
-    </br>
-       <h1 style="display: inline" id="valtemp"></h1> <h1 style="display: inline"> °C </h1>
-    </div>
+<div id="content" >
 
-    <div class="plus" id="btn_plus">
-        <center><img src="View/Content/images/capteurs/plus.png" alt="plus" /></center>
-    </div>
+   
 </div>
 
 <div id="piece">
-
-
-
-    <div class="salon" >
-        <center><img src="View/Content/images/piece/Salon.png" alt="salon" /></center>
+    <div class="salon"  id=1>
+        <center><img src="View/Content/images/piece/Salon.png" alt="salon"/></center>
     </div>
 
     <div class="salleamanger" >
