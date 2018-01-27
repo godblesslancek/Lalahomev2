@@ -8,7 +8,7 @@
 
 ?>
 
-<form method="post" action="index.php?controller=user&action=update" id="updateuser">
+<form method="post" action="index.php?controller=user&action=update" id="updateuser" class="form-style-6">
     <fieldset>
         <p>
             <span class="label"><label for="Name">Nom:</label></span>

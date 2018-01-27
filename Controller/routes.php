@@ -14,6 +14,7 @@
 
 // Si l'utilisateur est connecté on rajoute au tableau les actions possibles
 
+
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role'])
     {
