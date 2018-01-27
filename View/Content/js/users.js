@@ -85,17 +85,18 @@ function createTable(data) {
     "name_user": "Nom",
     "surname_user": "Prenom",
     "role_user": "Role",
-    "email": "@mail",
+    "email": "Email",
     "phone": "Phone",
-    "id_flat": "Id_flat",
+    "id_flat": "ID Appartement",
   };
-  createRow(header);
+  createRowHeader(header);
   $.each(row, function (index) {
     createRow(row[index]);
   });
   $('#fieldsetTabUser tr').click(function () {
    var id =  $(this).attr('id');
    $('#userselected').val(id);
+   $(this).addClass("selected").siblings().removeClass("selected");
   });
 }
 function createRow(data) {
@@ -108,6 +109,17 @@ function createRow(data) {
   row.append($("<td>" + data.phone + "</td>"));
   row.append($("<td>" + data.id_flat+ "</td>"));
   
+}
+function createRowHeader(data) {
+    var row = $('<tr id="' + data.id_user + '" />')
+    $('#fieldsetTabUser').append(row);
+    row.append($("<th>" + data.name_user + "</th>"));
+    row.append($("<th>" + data.surname_user+ "</th>"));
+    row.append($("<th>" + data.role_user + "</th>"));
+    row.append($("<th>" + data.email + "</th>"));
+    row.append($("<th>" + data.phone + "</th>"));
+    row.append($("<th>" + data.id_flat+ "</th>"));
+
 }
 
 function delete_user(id) {
