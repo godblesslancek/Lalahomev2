@@ -16,20 +16,26 @@ $controller_rh = array('user' => ['connect'], 'messages' => ['send']);
 if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role']):
         case 'admin':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],
-                'messages' => ['send']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
             break;
         case 'FU':
-            $controller_rh = array('user' => ['connect', 'disconnect']);
+            $controller_rh = array('user' => ['connect', 'disconnect'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState']);
             break;
         case 'FM':
-            $controller_rh = array('user' => ['connect', 'disconnect', 'register'],  'messages' => ['send','retreivemessage', 'GetSession']);
+            $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList'],
+                'flat' => ['getListRooms'],
+                'effector' => ['getEffectorList','getEffectorState', 'changeState']);
             break;
         case 'BM':
-            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);
-            break;
-        case 'tester':
-            $controller_rh = array('user' => ['connect', 'disconnect'], 'messages' => ['send','retreivemessage', 'GetSession']);     
+            $controller_rh = array('user' => ['connect', 'disconnect','userList'],
+                'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
+                'stats' => ['getBuildingList']);
     endswitch;
 }
 $used = false;

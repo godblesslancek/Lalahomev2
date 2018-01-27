@@ -51,6 +51,16 @@ class Users
         return $this->Role;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdFlat()
+    {
+        return $this->id_flat;
+    }
+
+
+
     public function __construct()
     {
         $db = Database::getInstance();
@@ -95,9 +105,9 @@ class Users
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
-        $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
+        $password = password_hash($user_param['Password'], PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
-        $stmt->bind_param("sssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $user_param['Password'] ,$user_param['Role']);
+        $stmt->bind_param("ssssss", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $password ,$user_param['Role']);
 
         $stmt->execute();
         $stmt->close();
@@ -105,12 +115,18 @@ class Users
     
     public function update_user($user_param){
 
-        $password = password_hash($user_param['password'], PASSWORD_DEFAULT);
-        $stmt = $this->conn->prepare('UPDATE user SET surname_user = ?, name_user = ?, email = ?, phone = ? WHERE id = ?')     ;
-        $stmt->bind_param("sssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone']);
+        $stmt = $this->conn->prepare('UPDATE user SET  name_user = ?, surname_user = ?, email = ?, phone = ?, role_user = ? WHERE id_user = ?')     ;
+        $stmt->bind_param("sssssi", $user_param['FirstName'] ,$user_param['LastName'], $user_param['Email'], $user_param['Phone'], $user_param["Role"], $user_param['ID']);
         $stmt->execute();
         $stmt->close();
 
+    }
+
+    public function delete_user($userid){
+        $stmt = $this->conn->prepare('DELETE FROM user WHERE user.id_user = ?');
+        $stmt->bind_param('i', $userid);
+        $stmt->execute();
+        $stmt->close();
     }
 
     public function setCurrentUser($userid){
@@ -167,6 +183,17 @@ class Users
             $rows[] = $row;
         }
         return $rows;
+    }
+
+    public function getUser(){
+
+        $user = [["name" => 'ID', 'value' => $this->getID()],
+            ["name" => 'FirstName', 'value' => $this->getFirstName()],
+            ["name" => 'LastName', 'value' => $this->getLastName()],
+            ["name" => 'Role', 'value' =>  $this->getRole()],
+            ["name" => 'Email', 'value' =>  $this->Email],
+            ["name" => 'Phone', 'value' =>  $this->Phone]];
+        return $user;
     }
 
 }

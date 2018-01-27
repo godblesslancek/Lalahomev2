@@ -5,7 +5,7 @@
 
     <div class="utilisateurs" >
         <h4>Ma famille</h4>
-        <center><a href="index.php?controller=user&action=register"><img src="View/Content/images/utilisateurs.png" alt="utilisateurs" /></a></center>
+        <center><a href="index.php?controller=pages&action=userList"><img src="View/Content/images/utilisateurs.png" alt="utilisateurs" /></a></center>
     </div>
     <div class="capteur" >
         <h4>Capteurs</h4>
@@ -13,7 +13,7 @@
     </div>
     <div class="piece" >
         <h4>Pièces</h4>
-        <center><img src="View/Content/images/piece.png" alt="piece" /></center>
+        <center><a href="index.php?controller=pages&action=piece"><img src="View/Content/images/piece.png" alt="piece" /></a></center>
     </div>
     <div class="statistique" >
         <h4>Statistiques de ma maison</h4>
