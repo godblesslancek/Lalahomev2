@@ -57,9 +57,6 @@ $( document ).ready(function() {
     });
 
     $('#addconv').click(function(){
-        //show modal with seach field
-        //load it with jquery load
-        //
         $("#dialog").dialog("open");
     });
 
