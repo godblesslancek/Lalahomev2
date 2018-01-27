@@ -2,9 +2,10 @@
 <div id="div2">
 <script src="View/Content/js/users.js"></script>
     <center>
-        <button type="button" OnClick="alert('Redirection en cours!')">Ajouter</button>
-        <button type="button" OnClick="alert('Touche')">Modifier</button>
-        <button type="button" OnClick="alert('Touche')">Supprimer</button>
+        <button type="button" id="btn_ajouter">Ajouter</button>
+        <button type="button" id="btn_modifier">Modifier</button>
+        <button type="button" id="btn_supprimer">Supprimer</button>
     </center>
     <br/>
         <div class="gauche" id="content"></div>
+<input type=hidden id="userselected" value="">
