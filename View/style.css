@@ -64,7 +64,7 @@ h5
     margin: 100px;
 }
 
-#piece
+#pieces
 {
     display: flex;
     justify-content: space-around;
@@ -124,7 +124,7 @@ input[type=submit]:hover {
 
 
 
-#piece :hover 
+#pieces :hover
 {
   width:180px;
   height:230px;

@@ -15,27 +15,27 @@
     </div>
 
     <div class="salleamanger" >
-        <center><img src="View/Content/images/piece/Salleam.png" alt="salleamanger" /></center>   
+        <center><img src="View/Content/images/piece/Salleam.png" alt="salleamanger" /></center>
     </div>
 
     <div class="cuisine" >
-        <center><img src="View/Content/images/piece/Cuisine.png" alt="cuisine" /></center>   
+        <center><img src="View/Content/images/piece/Cuisine.png" alt="cuisine" /></center>
     </div>
 
     <div class="sdb" >
-        <center><img src="View/Content/images/piece/Sdb.png" alt="sdb" /></center>   
+        <center><img src="View/Content/images/piece/Sdb.png" alt="sdb" /></center>
     </div>
 
     <div class="wc" >
-        <center><img src="View/Content/images/piece/WC.png" alt="wc" /></center>   
+        <center><img src="View/Content/images/piece/WC.png" alt="wc" /></center>
     </div>
 
     <div class="Chambre1" >
-        <center><img src="View/Content/images/piece/Chambre1.png" alt="Chambre1" /></center>   
+        <center><img src="View/Content/images/piece/Chambre1.png" alt="Chambre1" /></center>
     </div>
 
     <div class="Chambre2" >
-        <center><img src="View/Content/images/piece/Chambre2.png" alt="Chambre2" /></center>   
+        <center><img src="View/Content/images/piece/Chambre2.png" alt="Chambre2" /></center>
     </div>
 
     <div class="Chambre3" >
