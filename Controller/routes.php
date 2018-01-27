@@ -24,7 +24,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature','capteurs_binaire']);
             break;
         case 'FM':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'messages', 'userList','piece','capteurs','capteurs_Temperature','capteurs_binaire']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'messages', 'userList','piece','capteurs','capteurs_Temperature','capteurs_binaire', 'stats']);
             break;
         case 'BM':
             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats']);

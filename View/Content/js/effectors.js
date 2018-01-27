@@ -98,8 +98,16 @@ function includeType(data){
 
 function afficherEtatCapteur (etat, type){
 
+    switch (type){
+        case 'light':
+            type_shown = "Lumière";
+            break;
+        case "alarm":
+            type_shown = "Alarme";
+            break;
 
-    var html =   '<center><h1 id="type">' + type + '</h1>' +
+    }
+    var html =   '<center><h1 id="type">' + type_shown + '</h1>' +
         `  </br>
      <div class="demo">
      <div class="Switch ` + etat + `">
