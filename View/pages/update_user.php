@@ -32,10 +32,22 @@
         <p>
             <span class="label"><label for="Role">Role</label></span>
             <select id="Role" name="Role">
-                <option value="admin">Administrateur</option>
-                <option value="FM">Flat Manager</option>
-                <option value="FU">Flat User</option>
-                <option value="BM">Gestionnaire Immeuble</option>
+                <?php
+                session_start();
+                switch ($_SESSION['Role']){
+                    case "admin":
+                        echo '<option value="admin">Administrateur</option>
+                                    <option value="FM">Flat Manager</option>
+                                    <option value="FU">Flat User</option>
+                                    <option value="BM">Gestionnaire Immeuble</option>';
+                        break;
+                    case "FM":
+                        echo '<option value="FU">Flat User</option>';
+                        break;
+                    case "BM":
+                        echo '<option value="FM">Flat Manager</option>';
+                }
+                ?>
             </select>
         </p>
         <input type="hidden" id="ID" name="ID">
