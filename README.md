@@ -1,6 +1,6 @@
 # Lalahomev2
 
-Lalahome est un site d'automation pour habitationsconnectées developpé pour la société DomISEP.
+Lalahome est un site d'automation pour habitations connectées developpé pour la société DomISEP.
 
 ## Commençons !
 
