@@ -104,5 +104,9 @@ class PagesController {
     public function building_list(){
         require_once ('View/pages/building_list.php');
     }
+
+    public function nous_contacter(){
+        require_once ('View/pages/nous_contacter.php');
+    }
 }
 ?>
