@@ -8,10 +8,6 @@
         <center><a href="index.php?controller=pages&action=userList"><img src="View/Content/images/utilisateurs.png" alt="utilisateurs" /></a></center>
          
     </div>
-    <div class="capteur" >
-        <h4>Capteurs</h4>
-        <center><img src="View/Content/images/capteur.png" alt="offre" /></center>
-    </div>
 
     <div class="appartements" >
         <h4>Immeubles</h4>
