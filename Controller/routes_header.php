@@ -31,7 +31,8 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
                 'stats' => ['getBuildingList'],
                 'flat' => ['getListRooms'],
-                'effector' => ['getEffectorList','getEffectorState', 'changeState']);
+                'effector' => ['getEffectorList','getEffectorState', 'changeState'],
+                'sensor' => ['getSensorValue','changeValue','getSensorsList']);
             break;
         case 'BM':
             $controller_rh = array('user' => ['connect', 'disconnect','userList'],

@@ -39,11 +39,23 @@ function GetListRooms(){
                     });
                 }
             }).done(function(){
-                $(".capteur").click(function(){
-                    afficher_Capteur($(this).attr('type'), $(this).attr("id"));
-                });
+                $.ajax({
+                    url: "index.php",
+                    type: "GET",
+                    data: "controller=sensor&action=getSensorsList&id_room=" + id_room,
+                    datatype: "json",
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        $.each(data,function(index){
+                            includeType(data[index]);
+                        });
+                    }
+                }).done(function () {
+                    $(".capteur").click(function(){
+                        afficher_Capteur($(this).attr('type'), $(this).attr("id"));
+                    });
+                })
             });
-
         });
         });
 }
@@ -82,6 +94,17 @@ function ChangeValueEffector(id_effector){
     });
 }
 
+function GetValueSensor(id_sensor){
+    return $.ajax({
+        url: "index.php",
+        type: "GET",
+        data: "controller=sensor&action=getSensorValue&id_sensor=" + id_sensor,
+        datatype: "json",
+        success: function (data) {
+        }
+    });
+}
+
 function includeRoom(data){
     var html = '<div class="piece" id="'+ data.id +'"  >' +
         '<center><img src="View/Content/images/piece/' + data.name + '.png" alt="' + data.name + '" /></center></div>';
@@ -105,9 +128,9 @@ function afficherEtatCapteur (etat, type){
         case "alarm":
             type_shown = "Alarme";
             break;
-
     }
-    var html =   '<center><h1 id="type">' + type_shown + '</h1>' +
+
+    var effector =   '<center><h1 id="type">' + type_shown + '</h1>' +
         `  </br>
      <div class="demo">
      <div class="Switch ` + etat + `">
@@ -117,35 +140,85 @@ function afficherEtatCapteur (etat, type){
     <img id="image_capteurs" src="View/Content/images/capteurs/` + type + etat + `.png" alt="ONOFF" />
     </center>`
 
-    return html;
+    return effector;
+}
+
+function ChangeValue(id_sensor,value){
+    $.ajax({
+        url: "index.php?controller=sensor&action=changeValue",
+        type: "GET",
+        data: "id_sensor=" + id_sensor + "&value=" + value,
+        datatype: "json",
+        success: function (data) {
+        }
+    });
+}
+function SensorBox(data){
+
+    return  sensor = `<div class="Temperatures" >
+        <div class="moins"  id="btn_moins">
+            <center><img src="View/Content/images/capteurs/moins.png" alt="moins" /></center>
+        </div>
+
+        <div class="valeurTemp" >
+        </br>
+        <h1 style="display: inline" id="valtemp">${data}</h1> <h1 style="display: inline">°C</h1>
+    </div>
+
+    <div class="plus" id="btn_plus">
+    <center><img src="View/Content/images/capteurs/plus.png" alt="plus" /></center>
+    </div>
+    </div>`
 }
 
 function afficher_Capteur(type,id_capteur){
 
-     GetValueEffector(id_capteur).done(
-        function (data) {
-            var etat;
-            if (data == 1)
-                etat = 'On';
-            if (data == 0)
-                etat = 'Off';
 
-            $("#content").empty();
-            $("#capteurs").empty();
-            $("#content").append(afficherEtatCapteur(etat,type));
-            $('.Switch').click(function() {
-                if ($(this).hasClass('On')){
-                    $(this).removeClass('On').addClass('Off');
-                    etat = 'Off';
-                    ChangeValueEffector(id_capteur);
-                } else {
-                    $(this).removeClass('Off').addClass('On');
+    $("#content").empty();
+    $("#capteurs").empty();
+    if(['temp'].includes(type)){
+        GetValueSensor(id_capteur).done(function (data) {
+            $("#content").append(SensorBox(data));
+            $(".plus").click(function(e){
+                ChangeValue(id_capteur,1);
+                var val = Number($("#valtemp").text()) +1
+                $("#valtemp").empty();
+                $("#valtemp").append(val);
+            });
+            $(".moins").click(function(e){
+                ChangeValue(id_capteur,-1);
+                var val = Number($("#valtemp").text()) - 1
+                $("#valtemp").empty();
+                $("#valtemp").append(val);
+            });
+
+        });
+    }
+    else{
+        GetValueEffector(id_capteur).done(
+            function (data) {
+                var etat;
+                if (data == 1)
                     etat = 'On';
-                    ChangeValueEffector(id_capteur);
-                }
-                var img = 'View/Content/images/capteurs/' + type + etat + '.png'
-                $("#image_capteurs").attr("src", img );
-        }
-    );
-    });
+                if (data == 0)
+                    etat = 'Off';
+                $("#content").append(afficherEtatCapteur(etat,type));
+                $('.Switch').click(function() {
+                        if ($(this).hasClass('On')){
+                            $(this).removeClass('On').addClass('Off');
+                            etat = 'Off';
+                            ChangeValueEffector(id_capteur);
+                        } else {
+                            $(this).removeClass('Off').addClass('On');
+                            etat = 'On';
+                            ChangeValueEffector(id_capteur);
+                        }
+                        var img = 'View/Content/images/capteurs/' + type + etat + '.png'
+                        $("#image_capteurs").attr("src", img );
+                    }
+                );
+            });
+    }
+
+
 }
