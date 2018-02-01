@@ -110,6 +110,18 @@ class UsersController{
         }
     }
 
+    public function userBMList(){
+        if(helper::checkSession(array('IDuser')) && helper::checkGet(array('name'))){
+            $currentUser = new Users();
+            if ($_GET['name'] == "undefined")
+                $name  = "";
+            else
+                $name = $_GET['name'];
+
+            echo json_encode($currentUser->getUsersBMList($name));
+        }
+    }
+
     public function delete(){
         if(helper::checkSession(array('IDuser')) && helper::checkGet(array('id_user'))){
             $user = new Users();

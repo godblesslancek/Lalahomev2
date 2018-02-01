@@ -19,7 +19,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role'])
     {
         case 'admin':
-            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users','building_list']);
             break;
         case 'FU':
             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature','capteurs_binaire']);
@@ -28,7 +28,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
             $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'messages', 'userList','piece','capteurs','capteurs_Temperature','capteurs_binaire', 'stats']);
             break;
         case 'BM':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats','building_list']);
             break;
     }
 }
