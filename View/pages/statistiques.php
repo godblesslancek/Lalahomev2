@@ -8,11 +8,8 @@
 
 ?>
 
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src="View/Content/js/statistiques.js"></script>
-
 
 <?php
 if(helper::checkSession(array("Role"))){
@@ -27,9 +24,6 @@ if(helper::checkSession(array("Role"))){
             </div>';
             break;
         case "BM":
-            echo '<center><select id="selectBuilding"></select></center>';
-            break;
-        case "FM":
             echo '<center><select id="selectBuilding"></select></center>';
             break;
     }

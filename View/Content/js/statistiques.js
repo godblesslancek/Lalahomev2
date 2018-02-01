@@ -3,7 +3,6 @@ $( document ).ready(function() {
 
     $('#selectBuilding').change(function() {
         var selectedValue = parseInt(jQuery(this).val());
-
         //call ajax
     });
 });
@@ -313,50 +312,42 @@ function createDayConsoChart(data){
 
 function getBuilding(search){
     if (search = 'undefine'){
-        search = "";
+        search = " ";
     }
     $.ajax({
-        url: "index.php", // on donne l'URL du fichier de traitement
-        type: "GET", // la requête est de type POST
-        data: "controller=stats&action=getBuildingList&search=" + search, // et on envoie nos données,
+        url: "index.php",
+        type: "GET",
+        data: "controller=stats&action=getBuildingList&search=" + search,
         success: function(data) {
             fillDropDownList(JSON.parse(data),'#selectBuilding');
         }
     });
 }
 
+function getBuildingStat(id_building){
+    $.ajax({
+        url: "index.php",
+        type: "GET",
+        data: "controller=stats&action=getBuildingStats",
+        success: function(data) {
+
+        }
+    });
+}
+
+function getFlatStat(){
+    $.ajax({
+        url: "index.php",
+        type: "GET",
+        data: "controller=stats&action=getFlatStats",
+        success: function(data) {
+
+        }
+    });
+}
 function fillDropDownList(options,selector){
     $(selector).empty();
     $.each(options, function(i, p) {
         $(selector).append($('<option></option>').val(p[0]).html(p[1]));
     });
-}
-function createTable(data) {
-    $('#content').append('<table id="fieldsetTabUser"></table>');
-    var row = JSON.parse(data);
-    var header = {
-        "name_user": "Nom",
-        "surname_user": "Prenom",
-        "role_user": "Role",
-        "email": "@mail",
-        "phone": "Phone",
-        "id_flat": "Id_flat",
-
-
-    };
-    createRow(header);
-    $.each(row, function (index) {
-        createRow(row[index]);
-    })
-}
-function createRow(data) {
-    var row = $("<tr />")
-    $('#fieldsetTabUser').append(row);
-    row.append($("<td>" + data.name_user + "</td>"));
-    row.append($("<td>" + data.surname_user+ "</td>"));
-    row.append($("<td>" + data.role_user + "</td>"));
-    row.append($("<td>" + data.email + "</td>"));
-    row.append($("<td>" + data.phone + "</td>"));
-    row.append($("<td>" + data.id_flat+ "</td>"));
-
 }
