@@ -62,6 +62,10 @@ function call($controller, $action) {
             require_once ("Model/Effectors.php");
             $_controller = new EffectorController();
             break;
+        case 'sensor':
+            require_once ("Model/Sensors.php");
+            $_controller = new SensorController();
+            break;
         case 'building':
             require_once ("Model/Building.php");
             require_once ("Model/Users.php");
