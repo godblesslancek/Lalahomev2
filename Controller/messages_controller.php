@@ -68,7 +68,6 @@ class MessageController{
             $rows = array();
 
             foreach ($currentuser->getUsersList($_GET['search']) as $row){
-                //$rows[] = [$row['id_user'],$row['name_user'] . ' ' . $row['surname_user']];
                 $rows[] = ["label" => $row['name_user'] . ' ' . $row['surname_user'], "value" => $row['id_user']];
             }
             echo json_encode($rows);

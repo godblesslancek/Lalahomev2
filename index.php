@@ -61,6 +61,12 @@ function call($controller, $action) {
         case 'effector':
             require_once ("Model/Effectors.php");
             $_controller = new EffectorController();
+            break;
+        case 'building':
+            require_once ("Model/Building.php");
+            require_once ("Model/Users.php");
+            $_controller = new BuildingController();
+            break;
 
 
 
@@ -69,7 +75,6 @@ function call($controller, $action) {
     // Appel de l'action
     $_controller->{ $action }();
 }
-
 
 
 // Définition du controller et de l'action en fonction des paramètres

@@ -185,6 +185,21 @@ class Users
         return $rows;
     }
 
+    public function getUsersBMList($name){
+
+        $stmt = $this->conn->prepare('SELECT name_user,surname_user, id_user FROM user WHERE (CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") AND role_user = "BM" )LIMIT 30');
+        $stmt->bind_param("s", $name);
+
+        $stmt->execute();
+        $res= $stmt->get_result();
+        $rows = array();
+        while ($row = $res->fetch_assoc()) {
+            $name = (string) $row["name_user"] . " " . (string)$row["surname_user"];
+            $rows[] = ['label' => $name , 'value' => $row["id_user"]];
+        }
+        return $rows;
+    }
+
     public function getUser(){
 
         $user = [["name" => 'ID', 'value' => $this->getID()],

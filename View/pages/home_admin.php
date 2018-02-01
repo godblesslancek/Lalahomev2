@@ -11,8 +11,13 @@
     <div class="capteur" >
         <h4>Capteurs</h4>
         <center><img src="View/Content/images/capteur.png" alt="offre" /></center>
-       
     </div>
+
+    <div class="appartements" >
+        <h4>Immeubles</h4>
+        <a href="index.php?controller=pages&action=building_list"> <img src="View/Content/images/appartements.png" alt="building" /></a></center>
+    </div>
+
     <div class="appartements" >
         <h4>Appartements</h4>
         <center><img src="View/Content/images/appartements.png" alt="piece" /></center>

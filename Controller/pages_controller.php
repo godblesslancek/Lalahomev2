@@ -66,7 +66,6 @@ class PagesController {
     }
 
 
-
     public function stats(){
         require_once ('stats_controller.php');
         $page_stats = new stats_controller();
@@ -100,6 +99,10 @@ class PagesController {
 
     public function capteurs_binaire(){
         require_once ('View/pages/capteurs_binaire.php');
+    }
+
+    public function building_list(){
+        require_once ('View/pages/building_list.php');
     }
 }
 ?>
