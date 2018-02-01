@@ -53,13 +53,23 @@ class UsersController{
 
                 $user = new Users();
 
+                switch ($_SESSION['Role']){
+                    case 'admin':
+                        $id_flat = null;
+                    case 'FM':
+                        $cuser = new Users();
+                        $cuser->setCurrentUser($_SESSION['IDuser']);
+                        $id_flat = $cuser->getIdFlat();
+                }
+                $id_flat =
                 $user_param = [
                     "LastName" => $_POST['LastName'],
                     "FirstName" => $_POST['FirstName'],
                     "Email" => $_POST['Email'],
                     "Phone" => $_POST['Phone'],
                     "Password" => $_POST['Password'],
-                    'Role' => $_POST['Role']
+                    'Role' => $_POST['Role'],
+                    'id_flat' => $id_flat
                 ];
 
                 $user->create_user($user_param);

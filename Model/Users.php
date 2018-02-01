@@ -102,12 +102,9 @@ class Users
 
     public function create_user($user_param){
 
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
-
         $password = password_hash($user_param['Password'], PASSWORD_DEFAULT);
-        $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user) VALUES (?,?,?,?,?,?)');
-        $stmt->bind_param("ssssss", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $password ,$user_param['Role']);
+        $stmt = $this->conn->prepare('INSERT INTO user (surname_user,name_user,email,phone,password,role_user,id_flat) VALUES (?,?,?,?,?,?,?)');
+        $stmt->bind_param("ssssssi", $user_param['LastName'],$user_param['FirstName'] , $user_param['Email'], $user_param['Phone'] , $password ,$user_param['Role'],$user_param["id_flat"]);
 
         $stmt->execute();
         $stmt->close();
@@ -157,22 +154,22 @@ class Users
     
 
     public function getUsersList($name){
-
+        $id_user = $this->getID();
         switch ($this->Role) {
             case 'admin':
-                $stmt = $this->conn->prepare('SELECT * FROM user WHERE CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
-                $stmt->bind_param("s", $name);
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") AND  NOT user.id_user = ?  LIMIT 30');
+                $stmt->bind_param("si", $name, $id_user);
                 break;
             case 'FM':
-                $stmt = $this->conn->prepare('SELECT * FROM user WHERE user.id_flat = ? AND CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") LIMIT 30');
-                $stmt->bind_param("si", $name, $this->id_flat);
+                $stmt = $this->conn->prepare('SELECT * FROM user WHERE user.id_flat = ? AND CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") AND NOT user.id_user = ? LIMIT 30');
+                $stmt->bind_param("isi", $this->id_flat,$name,$id_user);
                 break;
             case 'BM':
                 $stmt = $this->conn->prepare('SELECT * FROM user
                                           INNER JOIN flat ON user.id_flat = flat.id_flat
                                           INNER JOIN building ON flat.id_building = building.id_building
-                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%")  LIMIT 20 ');
-                $stmt->bind_param("is", $this->ID, $name);
+                                        WHERE building.id_user = ? AND  CONCAT(user.name_user, " " , user.surname_user) LIKE CONCAT("%",?,"%") NOT user.id_user = ? LIMIT 20 ');
+                $stmt->bind_param("isi", $this->ID, $name, $id_user);
                 break;
         }
         
