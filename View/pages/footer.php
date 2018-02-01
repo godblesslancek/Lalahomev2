@@ -11,7 +11,6 @@
 <div class="ftr">
     <a class='ftr' href='index.php?controller=pages&action=faq'>FAQ</a>
     <a class='ftr' href='index.php?controller=pages&action=nous_contacter'>Nous contacter</a>
-    <a class='ftr' href="">Nous suivre</a>
-    <a class='ftr' href="">Confidentialité</a>
-    <a class='ftr' href="">Cookies</a>
+    <a class='ftr' href='index.php?controller=pages&action=nous_suivre'>Nous suivre</a>
+
 </div>
