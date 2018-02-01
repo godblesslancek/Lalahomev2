@@ -97,7 +97,7 @@ Vous pouvez dès à présent vous connecter avec l'identifiant admin@domisep.fr 
 * [PHP 7.1] 
 * [ChartJS](http://www.chartjs.org/) 
 * [JQuery](https://jquery.com/)
-* [JQuery](https://jqueryui.com/) 
+* [JQuery UI ](https://jqueryui.com/) 
 
 
 ## Auteurs
