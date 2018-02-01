@@ -10,7 +10,7 @@
 // Routeur permettant de gérer les actions qui nécessitent d'être placé dans le body
 
   //Liste des controllers autorisés et de leurs actions
-  $controllers = array('pages' => ['home', 'error', 'login', 'faq','nous_contacter']);
+  $controllers = array('pages' => ['home', 'error', 'login', 'faq','nous_contacter', 'nous_suivre']);
 
 // Si l'utilisateur est connecté on rajoute au tableau les actions possibles
 
@@ -19,16 +19,16 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
     switch ($_SESSION['Role'])
     {
         case 'admin':
-            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users','building_list','nous_contacter']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'userList', 'home_user', 'stats', 'faq', 'messages','users','building_list','nous_contacter', 'nous_suivre']);
             break;
         case 'FU':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature','capteurs_binaire','nous_contacter']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'piece','capteurs','capteurs_Temperature','capteurs_binaire','nous_contacter', 'nous_suivre']);
             break;
         case 'FM':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'messages', 'userList','piece','capteurs','capteurs_Temperature','capteurs_binaire', 'stats','nous_contacter']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq', 'messages', 'userList','piece','capteurs','capteurs_Temperature','capteurs_binaire', 'stats','nous_contacter', 'nous_suivre']);
             break;
         case 'BM':
-            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats','building_list','nous_contacter']);
+            $controllers = array('pages' => ['home', 'error', 'login', 'home_user','faq','messages','stats','building_list','nous_contacter', 'nous_suivre']);
             break;
     }
 }

@@ -108,5 +108,9 @@ class PagesController {
     public function nous_contacter(){
         require_once ('View/pages/nous_contacter.php');
     }
+
+    public function nous_suivre(){
+        require_once ('View/pages/nous_suivre.php');
+    }
 }
 ?>
