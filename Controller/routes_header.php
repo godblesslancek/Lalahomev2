@@ -18,7 +18,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
         case 'admin':
             $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update','userBMList'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
-                'stats' => ['getBuildingList'],
+                'stats' => ['getBuildingList','getTempWeekly','getTempDaily'],
                 'building' => ['getBuildingList','createBuilding','getBuilding','updateBuilding','deleteBuilding']);
             break;
         case 'FU':
@@ -29,7 +29,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
         case 'FM':
             $controller_rh = array('user' => ['connect', 'disconnect', 'register','userList','delete','getUser','update'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
-                'stats' => ['getBuildingList'],
+                'stats' => ['getBuildingList','getTempDaily','getTempWeekly'],
                 'flat' => ['getListRooms'],
                 'effector' => ['getEffectorList','getEffectorState', 'changeState'],
                 'sensor' => ['getSensorValue','changeValue','getSensorsList']);
@@ -37,7 +37,7 @@ if(isset($_SESSION['Role']) && !empty($_SESSION['Role'])){
         case 'BM':
             $controller_rh = array('user' => ['connect', 'disconnect','userList'],
                 'messages' => ['send','retreivemessage','retreiveconversation','getUser'],
-                'stats' => ['getBuildingList'],
+                'stats' => ['getBuildingList','getTempDaily','getTempWeekly'],
                 'building' => ['getBuildingList']);
     endswitch;
 }

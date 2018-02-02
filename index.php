@@ -50,6 +50,8 @@ function call($controller, $action) {
             break;
         case 'stats':
             require_once ("Model/Building.php");
+            require_once ("Model/Users.php");
+            require_once ("Model/History.php");
             $_controller = new stats_controller();
             break;
         case 'flat':

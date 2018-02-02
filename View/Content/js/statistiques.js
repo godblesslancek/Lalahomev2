@@ -5,6 +5,8 @@ $( document ).ready(function() {
         var selectedValue = parseInt(jQuery(this).val());
         //call ajax
     });
+
+    getFlatStat();
 });
 
 function renderCanvas(data){
@@ -15,8 +17,10 @@ function renderCanvas(data){
 }
 function createDayTempChart(data){
 
-   // data = [{ "label": "0-6h", "value": 18},{ "label": "6-12h" , "value": 20 },{ "label": "12-18h", "value": 21 },{ "label": "18-00h" , "value": 19 }]
-
+    data = [{ "label": "00-6h", "value": 18},
+        { "label": "6-12h" , "value": 20 },
+        { "label": "12-18h", "value": 21 },
+        { "label": "18-00h" , "value": 19 }]
 
     var labels = [], datas=[];
     $.each(data, function(index, obj) {
@@ -87,14 +91,14 @@ function createDayTempChart(data){
 
 function createWeekTempChart(data){
 
-    /*data = [{ "label": "Lundi", "value": 18},
+    data = [{ "label": "Lundi", "value": 18},
         { "label": "Mardi" , "value": 20 },
         { "label": "Mercredi", "value": 21 },
         { "label": "Jeudi" , "value": 19 },
         {"label": "Vendredi","value": 23},
         {"label": "Samedi","value": 22},
         {"label": "Dimanche","value": 21}]
-    */
+
     var labels = [], datas=[];
     $.each(data, function(index, obj) {
         labels.push(obj.label);
@@ -339,9 +343,17 @@ function getFlatStat(){
     $.ajax({
         url: "index.php",
         type: "GET",
-        data: "controller=stats&action=getFlatStats",
+        data: "controller=stats&action=getTempDaily",
         success: function(data) {
-
+            createDayTempChart(JSON.parse(data))
+        }
+    });
+    $.ajax({
+        url: "index.php",
+        type: "GET",
+        data: "controller=stats&action=getTempWeekly",
+        success: function(data) {
+            createWeekTempChart(JSON.parse(data))
         }
     });
 }
