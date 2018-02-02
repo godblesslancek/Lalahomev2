@@ -27,6 +27,46 @@ class stats_controller{
         }
     }
 
+    public function getTempDaily(){
+        if(helper::checkSession(array('IDuser','Role'))){
+            switch ($_SESSION["Role"]){
+                case 'admin':
+                    break;
+                case'BM':
+                    break;
+                case 'FM':
+                    $cuser = new Users();
+                    $cuser->setCurrentUser($_SESSION['IDuser']);
+                    $hist = new history();
+
+                    echo json_encode($hist->getHistoryDayFlat("temp",$cuser->getIdFlat(),date("Y-m-d")));
+                    break;
+            }
+        }
+    }
+
+    public function getTempWeekly(){
+        if(helper::checkSession(array('IDuser','Role'))){
+            switch ($_SESSION["Role"]){
+                case 'admin':
+                    break;
+                case'BM':
+                    break;
+                case 'FM':
+                    $cuser = new Users();
+                    $cuser->setCurrentUser($_SESSION['IDuser']);
+                    $hist = new history();
+
+                    echo json_encode($hist->getHistoryWeekFlat("temp",$cuser->getIdFlat(),date("Y-m-d"), date("Y-m-d",strtotime("+1 week"))));
+                    break;
+            }
+        }
+    }
+
+
+
+
+
 }
 
 
